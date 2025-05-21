@@ -8,14 +8,14 @@ export function useTheme() {
     if (typeof window !== 'undefined') {
       const savedTheme = localStorage.getItem('theme') as Theme | null;
       if (savedTheme) {
-        return savedTheme;
+        return 'dark';
       }
       
       const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
       return prefersDark ? 'dark' : 'light';
     }
     
-    return 'light'; // Default for SSR
+    return 'dark'; // Default for SSR
   };
 
   const [theme, setTheme] = useState<Theme>(getInitialTheme);
