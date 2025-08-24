@@ -1,5 +1,5 @@
 import React from 'react';
-import { Download } from 'lucide-react';
+import { Award, Users, Clock } from 'lucide-react';
 
 // Simple Section component included directly to avoid external dependencies
 interface SectionProps {
@@ -29,80 +29,64 @@ const About = () => {
     <Section
       id="about"
       title="About Me"
-      subtitle="Get to know me better"
-      className="bg-zinc-50 dark:bg-zinc-900"
+      subtitle="Passionate developer with a love for creating impactful solutions"
+      className="bg-white dark:bg-zinc-900"
     >
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        <div className="order-2 lg:order-1">
-          <h3 className="text-2xl font-bold text-zinc-800 dark:text-zinc-100 mb-4">
-            Hi, I'm Mubashar Nouman
-          </h3>
-
-          <p className="text-zinc-700 dark:text-zinc-300 mb-4">
-            I'm a passionate Full Stack Software Engineer with expertise in building scalable web applications using modern technologies. With a strong foundation in both frontend and backend development, I strive to create elegant solutions that solve real-world problems.
-          </p>
-
-          <p className="text-zinc-700 dark:text-zinc-300 mb-4">
-            My journey in software development began with a fascination for how technology can improve people's lives. This curiosity has driven me to continuously learn and adapt to the ever-evolving tech landscape. I specialize in React.js, Tailwind CSS, Flask, Python, MERN Stack, and Node.js.
-          </p>
-
-          {/* <p className="text-zinc-700 dark:text-zinc-300 mb-6">
-            When I'm not coding, you'll find me exploring new technologies, contributing to open-source projects, or sharing knowledge through technical writing and speaking engagements. I believe in writing clean, maintainable code and building applications with a focus on user experience and performance.
-          </p> */}
-
-          <div className="flex flex-wrap gap-6 md:gap-2 mb-10">
-            {[
-              { value: "4+", label: "Years Experience" },
-              { value: "50+", label: "Projects Completed" },
-              { value: "10+", label: "Clients Worked With" }
-            ].map((item, index) => (
-              <div
-                key={index}
-                className="w-40 md:w-48 p-4 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 rounded-xl relative transition-all duration-300 hover:cursor-pointer hover:bg-zinc-50 dark:hover:bg-zinc-800/70 hover:border-orange-400 dark:hover:border-orange-500 before:absolute before:top-0 before:left-0 before:w-full before:h-0.5 before:bg-orange-400 before:scale-x-0 hover:before:scale-x-100 before:origin-left before:transition-transform before:duration-300 overflow-hidden"
-              >
-                <p className="text-4xl font-extrabold text-zinc-800 dark:text-zinc-100 text-center mb-1">
-                  {item.value}
-                </p>
-                <p className="text-sm text-zinc-600 dark:text-zinc-400 text-center">
-                  {item.label}
-                </p>
+      <div className="max-w-6xl mx-auto">
+        {/* Main Content Grid */}
+        <div className="grid lg:grid-cols-3 gap-8">
+          {/* Left Column - Personal Info */}
+          <div className="lg:col-span-1">
+            <div className="bg-gradient-to-br from-orange-50 to-red-50 dark:from-orange-900/20 dark:to-red-900/20 rounded-2xl p-8 border border-orange-200 dark:border-orange-800">
+              <div className="text-center mb-6">
+                <div className="w-24 h-24 bg-gradient-to-br from-orange-500 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl font-bold text-white">MN</span>
+                </div>
+                <h3 className="text-xl font-bold text-zinc-800 dark:text-zinc-100 mb-2">Mubashar Nouman</h3>
+                <p className="text-orange-600 dark:text-orange-400 font-medium">Full Stack Developer</p>
               </div>
-            ))}
-          </div>
-
-
-
-
-          <button className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background bg-zinc-900 text-white hover:bg-zinc-800 dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-200 h-10 px-4 py-2">
-            <Download className="mr-2" size={18} />
-            Download Resume
-          </button>
-
-        </div>
-
-        <div className="order-1 lg:order-2 flex justify-center">
-          <div className="relative">
-            {/* Background frame */}
-            <div className="absolute -top-4 -left-4 w-64 h-64 md:w-[22rem] md:h-[22rem] rounded-2xl bg-zinc-200 dark:bg-zinc-700 transform rotate-6"></div>
-
-            {/* Main image frame */}
-            <div className="relative w-64 h-64 md:w-[22rem] md:h-[22rem] rounded-2xl overflow-hidden border-2 border-zinc-100 dark:border-zinc-800 shadow-xl bg-white dark:bg-zinc-800 z-10">
-              <img
-                src="../assets/mine.png"
-                alt="Mubashar Nouman"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute bottom-4 right-4 bg-white text-orange-700 text-sm font-medium py-1 px-3 rounded-md shadow-lg">
-                Full Stack Developer
+              
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <Clock size={18} className="text-orange-600 dark:text-orange-400" />
+                  <span className="text-sm text-zinc-600 dark:text-zinc-400">2+ Years Experience</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Users size={18} className="text-orange-600 dark:text-orange-400" />
+                  <span className="text-sm text-zinc-600 dark:text-zinc-400">50+ Projects Delivered</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Award size={18} className="text-orange-600 dark:text-orange-400" />
+                  <span className="text-sm text-zinc-600 dark:text-zinc-400">5+ Happy Clients</span>
+                </div>
               </div>
             </div>
+          </div>
 
-            {/* Decorative circle */}
-            <div className="absolute -bottom-3 -right-3 w-28 h-28 md:w-36 md:h-36 rounded-full bg-zinc-200 dark:bg-zinc-700 z-0"></div>
+          {/* Middle Column - Story */}
+          <div className="lg:col-span-2">
+            <div className="bg-white dark:bg-zinc-800 rounded-2xl p-8 border border-zinc-200 dark:border-zinc-700 shadow-lg">
+              <h3 className="text-xl font-bold text-zinc-800 dark:text-zinc-100 mb-6">My Story</h3>
+              <div className="space-y-4 text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                <p>
+                  I'm a passionate Full Stack Developer who believes that great software has the power to transform lives. 
+                  My journey began with a simple curiosity about how websites work, which quickly evolved into a deep 
+                  love for creating digital experiences that make a difference.
+                </p>
+                <p>
+                  Over the past few years, I've had the privilege of working on diverse projects that have taught me 
+                  the importance of clean code, user-centric design, and scalable architecture. From small business 
+                  websites to complex enterprise applications, each project has shaped my approach to development.
+                </p>
+                <p>
+                  When I'm not coding, you'll find me exploring new technologies, contributing to open-source projects, 
+                  or sharing knowledge with the developer community. I believe in continuous learning and staying 
+                  ahead of industry trends to deliver cutting-edge solutions.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
-
-
       </div>
     </Section>
   );
