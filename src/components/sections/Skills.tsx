@@ -39,7 +39,7 @@ const Skills = () => {
     {
       title: "Database",
       icon: <Database className="w-10 h-10 text-zinc-700 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-200 transition-colors duration-300" />,
-      skills: ["MongoDB", "PostgreSQL", "MySQL", "Firebase", "ORM", "SQL"]
+      skills: ["MongoDB", "PostgreSQL", "MySQL", "MS SQL", "ORM", "SQL"]
     },
     {
       title: "UI/UX - Wordpress",
