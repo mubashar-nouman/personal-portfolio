@@ -116,10 +116,10 @@ export const education: Education[] = [
 export const certifications: Certification[] = [
   {
     id: 1,
-    title: "Full Stack Developer Certification",
+    title: "Next.js & React - Build a Real App",
     issuer: "Udemy",
     date: "2022",
-    link: "https://udemy.com"
+    link: "https://www.udemy.com/certificate/UC-64ad52ea-0e99-4691-b84b-796a67f1840a/"
   },
   {
     id: 2,
@@ -292,7 +292,7 @@ export const hobbies: Hobby[] = [
   {
     id: 2,
     title: "Reading",
-    description: "Enjoy reading technical books and novels in my free time.",
+    description: "Enjoy reading technical books and articles in my free time.",
     icon: "book-open"
   },
   {
