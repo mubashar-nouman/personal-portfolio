@@ -52,7 +52,7 @@ const Header: React.FC = () => {
               scrollToSection('#home');
             }}
           >
-            Mubashar<span className="text-primary-500">.</span>
+            Mubashar<span className="text-orange-500">.</span>
           </a>
 
           {/* Desktop Navigation */}
@@ -61,7 +61,7 @@ const Header: React.FC = () => {
               <a
                 key={item.name}
                 href={item.href}
-                className="text-gray-700 dark:text-gray-200 hover:text-primary-500 dark:hover:text-primary-400 font-medium transition-colors duration-200"
+                className="text-gray-700 dark:text-gray-200 hover:text-orange-500 dark:hover:text-orange-400 font-medium transition-colors duration-200"
                 onClick={(e) => {
                   e.preventDefault();
                   scrollToSection(item.href);
@@ -77,7 +77,7 @@ const Header: React.FC = () => {
           <div className="flex items-center gap-4 md:hidden">
             <ThemeToggle />
             <button
-              className="text-gray-700 dark:text-gray-200 hover:text-primary-500 dark:hover:text-primary-400"
+              className="text-gray-700 dark:text-gray-200 hover:text-orange-500 dark:hover:text-orange-400"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label="Toggle mobile menu"
             >
@@ -96,7 +96,7 @@ const Header: React.FC = () => {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="text-gray-700 dark:text-gray-200 hover:text-primary-500 dark:hover:text-primary-400 font-medium transition-colors duration-200 py-2"
+                  className="text-gray-700 dark:text-gray-200 hover:text-orange-500 dark:hover:text-orange-400 font-medium transition-colors duration-200 py-2"
                   onClick={(e) => {
                     e.preventDefault();
                     scrollToSection(item.href);
