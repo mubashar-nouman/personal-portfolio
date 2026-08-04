@@ -1,7 +1,7 @@
 import React from 'react';
 import Section from '../ui/Section';
 import { hobbies } from '../../data';
-import { Camera, BookOpen, Mountain, ChevronRight as ChessKnight } from 'lucide-react';
+import { Camera, BookOpen, Mountain, Trophy } from 'lucide-react';
 
 const Hobbies: React.FC = () => {
   const getIcon = (iconName: string, size = 24) => {
@@ -12,8 +12,8 @@ const Hobbies: React.FC = () => {
         return <BookOpen size={size} />;
       case 'mountain':
         return <Mountain size={size} />;
-      case 'chess-knight':
-        return <ChessKnight size={size} />;
+      case 'cricket':
+        return <Trophy size={size} />;
       default:
         return null;
     }

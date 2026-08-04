@@ -14,7 +14,7 @@ const Card: React.FC<CardProps> = ({
   return (
     <div 
       className={`
-        bg-white dark:bg-dark-700 
+        bg-white dark:bg-zinc-800 
         rounded-lg 
         shadow-md 
         overflow-hidden 

@@ -9,7 +9,7 @@ const Education: React.FC = () => {
       id="education" 
       title="Education" 
       subtitle="My academic background"
-      className="bg-zinc-50 dark:bg-zinc-900"
+      className="bg-zinc-100 dark:bg-zinc-950"
     >
       <div className="max-w-3xl mx-auto">
         <div className="relative">

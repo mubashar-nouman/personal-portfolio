@@ -9,7 +9,7 @@ const Blog: React.FC = () => {
       id="blog" 
       title="Latest Blog Posts" 
       subtitle="Technical articles and insights"
-      className="bg-zinc-100 dark:bg-zinc-950"
+      className="bg-zinc-50 dark:bg-zinc-900"
     >
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {blogPosts.map((post) => (
@@ -20,7 +20,9 @@ const Blog: React.FC = () => {
             <div className="h-48 overflow-hidden">
               <img 
                 src={post.image} 
-                alt={post.title} 
+                alt="" 
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
               />
             </div>

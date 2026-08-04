@@ -305,6 +305,6 @@ export const hobbies: Hobby[] = [
     id: 4,
     title: "Cricket",
     description: "Playing cricket with friends and family on weekends.",
-    icon: "chess-knight"
+    icon: "cricket"
   }
 ];

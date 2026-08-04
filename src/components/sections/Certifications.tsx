@@ -9,7 +9,7 @@ const Certifications: React.FC = () => {
       id="certifications" 
       title="Certifications" 
       subtitle="Professional credentials and achievements"
-      className="bg-zinc-100 dark:bg-zinc-950"
+      className="bg-zinc-50 dark:bg-zinc-900"
     >
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {certifications.map((cert) => (

@@ -9,7 +9,7 @@ const Experience: React.FC = () => {
       id="experience" 
       title="Professional Experience" 
       subtitle="My journey in the tech industry"
-      className="bg-zinc-100 dark:bg-zinc-950"
+      className="bg-zinc-50 dark:bg-zinc-900"
     >
       <div className="max-w-3xl mx-auto relative">
         {/* Timeline line */}

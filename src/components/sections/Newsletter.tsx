@@ -28,7 +28,7 @@ const Newsletter: React.FC = () => {
       id="newsletter"
       title="Stay Updated"
       subtitle="Subscribe to the newsletter for insights, tips, and new projects"
-      className="bg-zinc-50 dark:bg-zinc-900 py-16"
+      className="bg-zinc-50 dark:bg-zinc-900"
     >
       <div className="max-w-2xl mx-auto px-4">
         <div className="relative overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-700 bg-white/80 dark:bg-zinc-800/80 backdrop-blur-md p-8 md:p-10">

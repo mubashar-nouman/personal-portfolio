@@ -1,88 +1,91 @@
-import React from 'react';
-import { Award, Users, Clock } from 'lucide-react';
-
-// Simple Section component included directly to avoid external dependencies
-interface SectionProps {
-  id: string;
-  title: string;
-  subtitle: string;
-  className?: string;
-  children: React.ReactNode;
-}
-
-const Section: React.FC<SectionProps> = ({ id, title, subtitle, className, children }) => {
-  return (
-    <section id={id} className={`py-16 px-4 ${className}`}>
-      <div className="container mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-2 text-zinc-900 dark:text-zinc-100">{title}</h2>
-          <p className="text-lg text-zinc-600 dark:text-zinc-400">{subtitle}</p>
-        </div>
-        {children}
-      </div>
-    </section>
-  );
-};
+import { ArrowUpRight, Code2, Layers3, MapPin } from 'lucide-react';
+import Section from '../ui/Section';
 
 const About = () => {
+  const technologies = [
+    'React',
+    'Next.js',
+    'TypeScript',
+    'Node.js',
+    'Python',
+    'FastAPI',
+    'OpenAI API',
+    'PostgreSQL',
+    'MongoDB',
+  ];
+
   return (
     <Section
       id="about"
       title="About Me"
-      subtitle="Passionate developer with a love for creating impactful solutions"
-      className="bg-white dark:bg-zinc-900"
+      subtitle="Senior Full Stack Developer specializing in AI-powered SaaS applications"
+      className="bg-zinc-100 dark:bg-zinc-950"
     >
-      <div className="max-w-6xl mx-auto">
-        {/* Main Content Grid */}
-        <div className="grid lg:grid-cols-3 gap-8">
-          {/* Left Column - Personal Info */}
-          <div className="lg:col-span-1">
-            <div className="bg-gradient-to-br from-orange-50 to-red-50 dark:from-orange-900/20 dark:to-red-900/20 rounded-2xl p-8 border border-orange-200 dark:border-orange-800">
-              <div className="text-center mb-6">
-                <div className="w-24 h-24 bg-gradient-to-br from-orange-500 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl font-bold text-white">MN</span>
+      <div className="mx-auto max-w-6xl">
+        <div className="grid gap-8 lg:grid-cols-3">
+          <aside className="relative overflow-hidden rounded-2xl bg-zinc-900 p-8 text-white dark:border dark:border-zinc-700">
+            <div className="absolute -right-12 -top-12 h-36 w-36 rounded-full bg-orange-500/20 blur-2xl" />
+            <div className="relative">
+              <div className="mb-6 flex items-center justify-between">
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-orange-500 text-lg font-bold shadow-lg shadow-orange-950/30">
+                  MN
                 </div>
-                <h3 className="text-xl font-bold text-zinc-800 dark:text-zinc-100 mb-2">Mubashar Nouman</h3>
-                <p className="text-orange-600 dark:text-orange-400 font-medium">Full Stack Developer</p>
+                <span className="flex items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3 py-1.5 text-xs font-medium text-emerald-300">
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+                  Available
+                </span>
               </div>
-              
-              <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <Clock size={18} className="text-orange-600 dark:text-orange-400" />
-                  <span className="text-sm text-zinc-600 dark:text-zinc-400">2+ Years Experience</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Users size={18} className="text-orange-600 dark:text-orange-400" />
-                  <span className="text-sm text-zinc-600 dark:text-zinc-400">50+ Projects Delivered</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Award size={18} className="text-orange-600 dark:text-orange-400" />
-                  <span className="text-sm text-zinc-600 dark:text-zinc-400">5+ Happy Clients</span>
-                </div>
-              </div>
-            </div>
-          </div>
 
-          {/* Middle Column - Story */}
-          <div className="lg:col-span-2">
-            <div className="bg-white dark:bg-zinc-800 rounded-2xl p-8 border border-zinc-200 dark:border-zinc-700 shadow-lg">
-              <h3 className="text-xl font-bold text-zinc-800 dark:text-zinc-100 mb-6">My Story</h3>
-              <div className="space-y-4 text-zinc-600 dark:text-zinc-400 leading-relaxed">
-                <p>
-                  I'm a passionate Full Stack Developer who believes that great software has the power to transform lives. 
-                  My journey began with a simple curiosity about how websites work, which quickly evolved into a deep 
-                  love for creating digital experiences that make a difference.
-                </p>
-                <p>
-                  Over the past few years, I've had the privilege of working on diverse projects that have taught me 
-                  the importance of clean code, user-centric design, and scalable architecture. From small business 
-                  websites to complex enterprise applications, each project has shaped my approach to development.
-                </p>
-                <p>
-                  When I'm not coding, you'll find me exploring new technologies, contributing to open-source projects, 
-                  or sharing knowledge with the developer community. I believe in continuous learning and staying 
-                  ahead of industry trends to deliver cutting-edge solutions.
-                </p>
+              <h3 className="text-xl font-bold">Mubashar Nouman</h3>
+              <p className="mt-1 text-sm font-medium text-orange-400">Senior Full Stack Developer</p>
+
+              <div className="mt-7 space-y-4 border-t border-white/10 pt-6">
+                <div className="flex items-center gap-3 text-sm text-zinc-300">
+                  <MapPin size={17} className="text-orange-400" />
+                  Lahore, Pakistan
+                </div>
+                <div className="flex items-center gap-3 text-sm text-zinc-300">
+                  <Code2 size={17} className="text-orange-400" />
+                  4+ years of experience
+                </div>
+                <div className="flex items-center gap-3 text-sm text-zinc-300">
+                  <Layers3 size={17} className="text-orange-400" />
+                  AI-powered SaaS products
+                </div>
+              </div>
+
+              <a href="#contact" className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-white transition-colors hover:text-orange-400">
+                Start a conversation <ArrowUpRight size={15} />
+              </a>
+            </div>
+          </aside>
+
+          <div className="relative rounded-2xl border border-zinc-200 bg-white p-8 shadow-sm dark:border-zinc-700 dark:bg-zinc-800 lg:col-span-2">
+            <div className="absolute left-0 top-8 h-12 w-1 rounded-r-full bg-orange-500" />
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-orange-600 dark:text-orange-400">
+              Professional profile
+            </p>
+            <h3 className="mt-3 text-xl font-bold leading-snug text-zinc-900 dark:text-white">
+              Building scalable AI SaaS products from idea to production.
+            </h3>
+
+            <div className="mt-5 space-y-4 leading-relaxed text-zinc-600 dark:text-zinc-300">
+              <p>
+                With 4+ years of experience, I build production-ready AI SaaS applications using React, Next.js, Node.js, Python, and modern databases.
+              </p>
+              <p>
+                I handle architecture, AI integrations, APIs, authentication, subscriptions, dashboards, performance, and deployment while maintaining clean, secure code.
+              </p>
+            </div>
+
+            <div className="mt-7 border-t border-zinc-200 pt-6 dark:border-zinc-700">
+              <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Core toolkit</p>
+              <div className="flex flex-wrap gap-2">
+                {technologies.map((technology) => (
+                  <span key={technology} className="rounded-md bg-zinc-100 px-3 py-1.5 text-xs font-medium text-zinc-700 dark:bg-zinc-700 dark:text-zinc-200">
+                    {technology}
+                  </span>
+                ))}
               </div>
             </div>
           </div>

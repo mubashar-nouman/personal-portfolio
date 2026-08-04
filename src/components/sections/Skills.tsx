@@ -1,99 +1,85 @@
-import React from 'react';
-import { Code, Server, Database, Layout, Command, Globe } from 'lucide-react';
+import { Bot, Braces, Database, Server, ShieldCheck, Workflow } from 'lucide-react';
+import Section from '../ui/Section';
 
-// Simple Section component included directly to avoid external dependencies
-interface SectionProps {
-  id: string;
-  title: string;
-  subtitle: string;
-  className?: string;
-  children: React.ReactNode;
-}
-
-const Section: React.FC<SectionProps> = ({ id, title, subtitle, className, children }) => {
-  return (
-    <section id={id} className={`py-16 px-4 ${className}`}>
-      <div className="container mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-2 text-zinc-900 dark:text-zinc-100">{title}</h2>
-          <p className="text-lg text-zinc-600 dark:text-zinc-400">{subtitle}</p>
-        </div>
-        {children}
-      </div>
-    </section>
-  );
-};
+const skillCategories = [
+  {
+    title: 'AI & SaaS',
+    description: 'Intelligent, subscription-ready products',
+    icon: Bot,
+    skills: ['OpenAI API', 'LLM Integration', 'AI Chatbots', 'Prompt Engineering', 'Authentication', 'Subscriptions'],
+  },
+  {
+    title: 'Frontend',
+    description: 'Fast and responsive user interfaces',
+    icon: Braces,
+    skills: ['React', 'Next.js', 'TypeScript', 'Redux', 'Tailwind CSS', 'ShadCN'],
+  },
+  {
+    title: 'Backend & APIs',
+    description: 'Secure and maintainable services',
+    icon: Server,
+    skills: ['Node.js', 'Express.js', 'Python', 'FastAPI', 'Flask', 'REST APIs'],
+  },
+  {
+    title: 'Data Layer',
+    description: 'Reliable storage and data modeling',
+    icon: Database,
+    skills: ['PostgreSQL', 'MongoDB', 'MySQL', 'SQL', 'ORMs', 'Schema Design'],
+  },
+  {
+    title: 'Architecture',
+    description: 'Systems designed to grow cleanly',
+    icon: Workflow,
+    skills: ['System Design', 'API Integration', 'Reusable Components', 'Scalable Architecture', 'Performance'],
+  },
+  {
+    title: 'Engineering Quality',
+    description: 'Production standards throughout delivery',
+    icon: ShieldCheck,
+    skills: ['Clean Code', 'Code Reviews', 'Security', 'Accessibility', 'Testing', 'SEO'],
+  },
+];
 
 const Skills = () => {
-  const skillCategories = [
-    {
-      title: "Frontend",
-      icon: <Layout className="w-10 h-10 text-zinc-700 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-200 transition-colors duration-300" />,
-      skills: ["HTML", "CSS", "JavaScript", "Typescript", "React.js", "Redux", "Next.js", "Tailwind CSS", "ShadCN", "Responsive Design"]
-    },
-    {
-      title: "Backend",
-      icon: <Server className="w-10 h-10 text-zinc-700 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-200 transition-colors duration-300" />,
-      skills: ["Node.js", "Express", "Flask", "Python", "RESTful APIs", "GraphQL", "Fast API"]
-    },
-    {
-      title: "Database",
-      icon: <Database className="w-10 h-10 text-zinc-700 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-200 transition-colors duration-300" />,
-      skills: ["MongoDB", "PostgreSQL", "MySQL", "MS SQL", "ORM", "SQL"]
-    },
-    {
-      title: "UI/UX - Wordpress",
-      icon: <Command className="w-10 h-10 text-zinc-700 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-200 transition-colors duration-300" />,
-      skills: ["WordPress", "Elementor", "Figma", "Adobe XD", "Wireframing", "Prototyping", "User Research", "Usability Testing"]
-    },
-    {
-      title: "Development",
-      icon: <Code className="w-10 h-10 text-zinc-700 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-200 transition-colors duration-300" />,
-      skills: ["Agile Methodology", "Code Reviews", "Clean Code", "Performance Optimization", "SEO", "Accessibility", "Secure Applications"]
-    },
-    {
-      title: "Other",
-      icon: <Globe className="w-10 h-10 text-zinc-700 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-200 transition-colors duration-300" />,
-      skills: ["Problem Solving", "Technical Writing", "UI/UX Design", "Responsive Design", "API Integration", "Project Management", "Team Collaboration"]
-    }
-  ];
-
   return (
-    <Section 
-      id="skills" 
-      title="Skills & Expertise" 
-      subtitle="Technologies and tools I work with"
-      className="bg-zinc-100 dark:bg-zinc-950"
+    <Section
+      id="skills"
+      title="Skills & Expertise"
+      subtitle="The technologies and engineering practices I use to build production-ready AI SaaS products"
+      className="bg-zinc-50 dark:bg-zinc-900"
     >
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {skillCategories.map((category, index) => (
-          <div
-            key={index}
-            className="relative bg-white dark:bg-zinc-800 rounded-lg p-6 border border-zinc-200 dark:border-zinc-700 group overflow-hidden transition-all duration-300 hover:border-zinc-400 dark:hover:border-zinc-600 shadow-sm hover:shadow-md"
+      <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+        {skillCategories.map(({ title, description, icon: Icon, skills }, index) => (
+          <article
+            key={title}
+            className="group relative overflow-hidden rounded-xl border border-zinc-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-orange-300 hover:shadow-md dark:border-zinc-700 dark:bg-zinc-800 dark:hover:border-orange-500/50"
           >
-            {/* Gradient accent in the corner */}
-            <div className="absolute -top-10 -right-10 w-20 h-20 bg-gradient-to-br from-zinc-300 to-zinc-100 dark:from-zinc-700 dark:to-zinc-900 rounded-full opacity-50 group-hover:opacity-80 transition-opacity duration-300"></div>
-            
-            <div className="flex items-center mb-5 space-x-4">
-              <div className="flex-shrink-0 p-3 bg-zinc-100 dark:bg-zinc-900 rounded-lg shadow-md">
-                {category.icon}
+            <div className="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-orange-500 to-red-500 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+
+            <div className="flex items-start justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-orange-50 text-orange-600 dark:bg-orange-500/10 dark:text-orange-400">
+                  <Icon size={20} />
+                </span>
+                <div>
+                  <h3 className="font-bold text-zinc-900 dark:text-white">{title}</h3>
+                  <p className="mt-0.5 text-xs text-zinc-500 dark:text-zinc-400">{description}</p>
+                </div>
               </div>
-              <h3 className="text-xl font-bold text-zinc-800 dark:text-zinc-200">
-                {category.title}
-              </h3>
+              <span className="text-xs font-bold text-zinc-300 dark:text-zinc-600">0{index + 1}</span>
             </div>
-            
-            <div className="flex flex-wrap gap-2">
-              {category.skills.map((skill, skillIndex) => (
+
+            <div className="mt-5 flex flex-wrap gap-2 border-t border-zinc-100 pt-5 dark:border-zinc-700">
+              {skills.map((skill) => (
                 <span
-                  key={skillIndex}
-                  className="bg-zinc-100 dark:bg-zinc-900 text-zinc-700 dark:text-zinc-400 px-3 py-1 rounded-md text-sm font-medium transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-700 hover:text-zinc-900 dark:hover:text-zinc-200"
+                  key={skill}
+                  className="rounded-md bg-zinc-100 px-2.5 py-1.5 text-xs font-medium text-zinc-700 transition-colors group-hover:bg-orange-50 group-hover:text-orange-800 dark:bg-zinc-900 dark:text-zinc-300 dark:group-hover:bg-orange-500/10 dark:group-hover:text-orange-300"
                 >
                   {skill}
                 </span>
               ))}
             </div>
-          </div>
+          </article>
         ))}
       </div>
     </Section>

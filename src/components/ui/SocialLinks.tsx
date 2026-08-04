@@ -25,7 +25,7 @@ const SocialLinks: React.FC<SocialLinksProps> = ({
           href={link.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-gray-600 hover:text-orange-500 dark:text-gray-300 dark:hover:text-orange-400 transition-colors duration-200"
+          className="text-zinc-600 hover:text-orange-500 dark:text-zinc-300 dark:hover:text-orange-400 transition-colors duration-200 rounded-sm"
           aria-label={link.name}
         >
           {link.icon}

@@ -13,7 +13,7 @@ const Testimonials: React.FC = () => {
       id="testimonials" 
       title="Client Testimonials" 
       subtitle="What people say about my work"
-      className="bg-zinc-50 dark:bg-zinc-900"
+      className="bg-zinc-100 dark:bg-zinc-950"
     >
       <div className="max-w-6xl mx-auto">
         <Swiper
@@ -44,6 +44,8 @@ const Testimonials: React.FC = () => {
                     <img 
                       src={testimonial.avatar} 
                       alt={testimonial.name} 
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover"
                     />
                   </div>

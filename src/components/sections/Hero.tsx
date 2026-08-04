@@ -125,7 +125,7 @@ const Hero = () => {
                   <div className="w-full h-full rounded-2xl bg-white dark:bg-zinc-900 flex items-center justify-center">
                     <div className="w-full h-full rounded-2xl overflow-hidden">
                       <img
-                        src="/mine.png"
+                        src="/mine.jpg"
                         alt="Mubashar Nouman"
                         className="w-full h-full object-cover"
                       />
