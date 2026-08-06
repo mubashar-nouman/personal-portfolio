@@ -30,7 +30,7 @@ const Section: React.FC<SectionProps> = ({
               {subtitle}
             </p>
           )}
-          <div className="w-20 h-1 bg-white mx-auto mt-6"></div>
+          <div className="w-20 h-1 rounded-full bg-orange-500 mx-auto mt-6"></div>
         </div>
         {children}
       </div>

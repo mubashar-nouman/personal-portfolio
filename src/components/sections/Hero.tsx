@@ -1,19 +1,13 @@
-import { ArrowDown, Github, Linkedin, Instagram, Mail, Download, Code, Zap, Star } from 'lucide-react';
+import { ArrowDown, Github, Linkedin, Instagram, Mail, Download, Check, Zap, Star } from 'lucide-react';
 
 const Hero = () => {
-  const scrollToAbout = () => {
-    const aboutSection = document.querySelector('#about');
-    if (aboutSection) {
-      aboutSection.scrollIntoView({ behavior: 'smooth' });
-    }
+  const scrollTo = (selector: string) => {
+    document.querySelector(selector)?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const scrollToContact = () => {
-    const contactSection = document.querySelector('#contact');
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  const scrollToAbout = () => scrollTo('#about');
+  const scrollToContact = () => scrollTo('#contact');
+  const scrollToProjects = () => scrollTo('#projects');
 
   return (
     <section
@@ -38,7 +32,7 @@ const Hero = () => {
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gradient-to-r from-orange-100 to-red-100 dark:from-orange-900/30 dark:to-red-900/30 border border-orange-200 dark:border-orange-800">
               <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></div>
               <span className="text-xs font-medium text-orange-800 dark:text-orange-200">
-                Open to new opportunities
+                Available for new client projects
               </span>
             </div>
 
@@ -51,14 +45,25 @@ const Hero = () => {
                 </span>
               </h1>
               <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-zinc-800 dark:text-zinc-200">
-                Full Stack Developer
+                Senior Full Stack Engineer
               </h2>
             </div>
 
             {/* Description */}
             <p className="text-base sm:text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-lg mx-auto lg:mx-0">
-              I transform ideas into powerful digital solutions. Building scalable applications with clean code and exceptional user experiences.
+              I build AI-powered SaaS products end to end. 4+ years turning ideas into production software with React,
+              Next.js, Node.js and Python.
             </p>
+
+            {/* Trust markers */}
+            <ul className="flex flex-wrap gap-x-4 gap-y-1.5 justify-center lg:justify-start text-sm text-zinc-600 dark:text-zinc-400">
+              {['AI & LLM integrations', 'Web, mobile & API'].map((item) => (
+                <li key={item} className="flex items-center gap-1.5">
+                  <Check size={15} className="text-orange-500 flex-shrink-0" />
+                  {item}
+                </li>
+              ))}
+            </ul>
 
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
@@ -67,16 +72,22 @@ const Hero = () => {
                 className="group inline-flex items-center justify-center px-6 py-3 rounded-lg bg-gradient-to-r from-orange-600 to-red-600 text-white font-medium hover:from-orange-700 hover:to-red-700 transition-all duration-300 shadow-lg hover:shadow-xl"
               >
                 <Mail size={18} className="mr-2 group-hover:rotate-12 transition-transform duration-300" />
-                Start a Project
+                Hire me
+              </button>
+              <button
+                onClick={scrollToProjects}
+                className="group inline-flex items-center justify-center px-6 py-3 rounded-lg border-2 border-zinc-300 dark:border-zinc-600 text-zinc-700 dark:text-zinc-300 font-medium hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:border-orange-400 dark:hover:border-orange-500 transition-all duration-300"
+              >
+                View my work
               </button>
               <a
                 href="https://drive.google.com/uc?export=download&id=1CSryFZ4PYKRPNb7xOhs-GnIWgtY2IKwf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center justify-center px-6 py-3 rounded-lg border-2 border-zinc-300 dark:border-zinc-600 text-zinc-700 dark:text-zinc-300 font-medium hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:border-orange-400 dark:hover:border-orange-500 transition-all duration-300"
+                className="group inline-flex items-center justify-center px-6 py-3 rounded-lg text-zinc-600 dark:text-zinc-400 font-medium hover:text-orange-600 dark:hover:text-orange-400 transition-all duration-300"
               >
-                <Download size={18} className="mr-2 transition-transform duration-300" />
-                Download CV
+                <Download size={18} className="mr-2" />
+                CV
               </a>
             </div>
 
@@ -113,8 +124,8 @@ const Hero = () => {
           </div>
 
           {/* Right Side - Clean Professional Image */}
-          <div className="flex justify-center lg:justify-end order-2 lg:order-2">
-            <div className="relative">
+          <div className="flex justify-center lg:justify-end order-2 lg:order-2 lg:pr-8">
+            <div className="relative w-64 sm:w-80">
               {/* Subtle Background Glow */}
               <div className="absolute inset-0 w-64 h-64 sm:w-80 sm:h-80 bg-gradient-to-br from-orange-500/8 to-red-500/8 rounded-full blur-2xl"></div>
               
@@ -140,22 +151,22 @@ const Hero = () => {
               {/* Simple Skill Indicators - Hidden on mobile */}
               <div className="hidden md:block absolute -top-4 -right-4 bg-white dark:bg-zinc-800 rounded-xl p-3 shadow-lg border border-zinc-200 dark:border-zinc-700">
                 <div className="flex items-center gap-2">
-                  <Code size={16} className="text-orange-600 dark:text-orange-400" />
-                  <span className="text-sm font-medium text-zinc-700 dark:text-zinc-300">React</span>
+                  <Star size={16} className="text-orange-600 dark:text-orange-400" />
+                  <span className="text-sm font-medium text-zinc-700 dark:text-zinc-300">4+ years</span>
                 </div>
               </div>
-              
+
               <div className="hidden md:block absolute -bottom-4 -left-4 bg-white dark:bg-zinc-800 rounded-xl p-3 shadow-lg border border-zinc-200 dark:border-zinc-700">
                 <div className="flex items-center gap-2">
                   <Zap size={16} className="text-orange-600 dark:text-orange-400" />
-                  <span className="text-sm font-medium text-zinc-700 dark:text-zinc-300">Fast</span>
+                  <span className="text-sm font-medium text-zinc-700 dark:text-zinc-300">AI SaaS</span>
                 </div>
               </div>
-              
+
               <div className="hidden md:block absolute top-1/2 -left-6 transform -translate-y-1/2 bg-white dark:bg-zinc-800 rounded-xl p-3 shadow-lg border border-zinc-200 dark:border-zinc-700">
                 <div className="flex items-center gap-2">
-                  <Star size={16} className="text-orange-600 dark:text-orange-400" />
-                  <span className="text-sm font-medium text-zinc-700 dark:text-zinc-300">Quality</span>
+                  <Check size={16} className="text-orange-600 dark:text-orange-400" />
+                  <span className="text-sm font-medium text-zinc-700 dark:text-zinc-300">Available</span>
                 </div>
               </div>
             </div>

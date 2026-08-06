@@ -4,9 +4,12 @@ import { speakingEvents } from '../../data';
 import { Mic, Calendar, ArrowRight } from 'lucide-react';
 
 const Speaking: React.FC = () => {
+  // Renders nothing until real speaking events exist in the data file.
+  if (speakingEvents.length === 0) return null;
+
   return (
-    <Section 
-      id="speaking" 
+    <Section
+      id="speaking"
       title="Speaking & Events" 
       subtitle="Technical talks and workshops"
       className="bg-zinc-50 dark:bg-zinc-900"

@@ -1,52 +1,182 @@
-import { 
-  Project, 
-  Experience, 
-  Education, 
-  Certification, 
-  Testimonial, 
+import {
+  Project,
+  Experience,
+  Education,
+  Certification,
+  Testimonial,
   BlogPost,
   SpeakingEvent,
   OpenSourceContribution,
   Award,
-  Hobby
+  Hobby,
+  Service,
+  ProcessStep
 } from '../types';
+
+export const services: Service[] = [
+  {
+    id: 1,
+    title: "AI SaaS Development",
+    description:
+      "End-to-end AI products: LLM integrations, chat interfaces, and the billing and auth layers that turn them into a business.",
+    deliverables: [
+      "LLM and OpenAI API integration",
+      "Subscription billing and usage limits",
+      "Multi-tenant auth and user management",
+    ],
+    icon: 'sparkles',
+  },
+  {
+    id: 2,
+    title: "Full Stack Web Apps",
+    description:
+      "Production web applications built on React and Next.js with a typed, well-structured backend behind them.",
+    deliverables: [
+      "React / Next.js frontends",
+      "REST APIs in Node.js or FastAPI",
+      "PostgreSQL and MongoDB data modeling",
+    ],
+    icon: 'layout',
+  },
+  {
+    id: 3,
+    title: "MVP Builds for Founders",
+    description:
+      "Take an idea to a working, demoable product fast, without the shortcuts that force a rewrite six months later.",
+    deliverables: [
+      "Scoping and technical planning",
+      "Shippable MVP with core flows",
+      "Deployment and handover documentation",
+    ],
+    icon: 'server',
+  },
+  {
+    id: 4,
+    title: "Mobile Apps",
+    description:
+      "Cross-platform React Native applications sharing one codebase across iOS and Android.",
+    deliverables: [
+      "React Native app development",
+      "Backend and API integration",
+      "App store release support",
+    ],
+    icon: 'smartphone',
+  },
+];
+
+export const processSteps: ProcessStep[] = [
+  {
+    id: 1,
+    title: "Discovery call",
+    description:
+      "We talk through the problem, your users and your constraints. You leave with a clear view of scope, whether or not we work together.",
+  },
+  {
+    id: 2,
+    title: "Proposal & plan",
+    description:
+      "A written breakdown of deliverables, timeline and cost. Fixed scope up front, so there are no surprise invoices later.",
+  },
+  {
+    id: 3,
+    title: "Build in sprints",
+    description:
+      "Weekly demos of working software. You see progress continuously and can redirect early instead of at the end.",
+  },
+  {
+    id: 4,
+    title: "Launch & handover",
+    description:
+      "Deployment, documentation and a walkthrough of the codebase, plus a support window to settle anything post-launch.",
+  },
+];
 
 export const projects: Project[] = [
   {
     id: 1,
-    title: "E-commerce Platform",
-    description: "A full-stack e-commerce platform built with React, Node.js, and MongoDB. Features include product search, filtering, cart management, and checkout.",
-    tags: ["React", "Node.js", "MongoDB", "Express", "Redux"],
-    image: "https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    demoLink: "https://example.com",
-    codeLink: "https://github.com",
+    title: "SkillPet",
+    tagline: "Gamified AI learning platform with subscriptions",
+    description:
+      "A learn-mode SaaS platform that turns AI courses into a habit. Learners get streaks, XP, gems and lives alongside a companion pet that keeps them coming back, while a Pro tier unlocks the full catalog and premium lessons.",
+    highlights: [
+      "Daily streak and XP engine that tracks per-course progress across the week",
+      "Course catalog with progress, achievements and personalised recommendations",
+      "Subscription billing with a free tier and gated Pro catalog access",
+      "Responsive dashboard shell with sidebar navigation and profile management",
+    ],
+    tags: ["Next.js", "TypeScript", "Node.js", "PostgreSQL", "Tailwind CSS", "Stripe"],
+    image: "/projects/skillpet.jpeg",
+    year: "2025",
+    category: "SaaS",
+    featured: true,
   },
   {
     id: 2,
-    title: "Task Management App",
-    description: "A productivity app for managing tasks and projects with real-time updates, team collaboration, and analytics dashboards.",
-    tags: ["React", "Firebase", "Tailwind CSS", "TypeScript"],
-    image: "https://images.pexels.com/photos/3182773/pexels-photo-3182773.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    demoLink: "https://example.com",
-    codeLink: "https://github.com",
+    title: "MX Bot",
+    tagline: "One interface for every LLM",
+    description:
+      "A centralized platform that lets teams access and compare multiple LLM models in one place, removing the overhead of managing separate provider integrations and API keys.",
+    highlights: [
+      "Unified chat interface routing to multiple model providers",
+      "Secure API key handling and per-conversation model switching",
+      "Persistent chat history with real-time streamed responses",
+    ],
+    tags: ["Next.js", "Node.js", "MongoDB", "Express", "Redux"],
+    image: "/projects/mx-bot.png",
+    year: "2025",
+    category: "AI",
+    demoLink: "https://mxbot-frontend.vercel.app/",
+    codeLink: "https://github.com/mubashar-nouman/mxbot-frontend",
   },
   {
     id: 3,
     title: "AI Content Generator",
-    description: "An application that uses AI to generate content for blogs, social media, and marketing materials based on user inputs.",
-    tags: ["React", "Python", "Flask", "OpenAI API", "MongoDB"],
-    image: "https://images.pexels.com/photos/2004161/pexels-photo-2004161.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    demoLink: "https://example.com",
-    codeLink: "https://github.com",
+    tagline: "Marketing copy on demand",
+    description:
+      "A content SaaS that generates blog, social and marketing copy from predefined prompt templates, so non-technical teams can produce on-brand drafts without writing prompts themselves.",
+    highlights: [
+      "Template-driven prompt library for repeatable content formats",
+      "Credit-based usage tracking tied to user accounts",
+      "Clean editor workflow from generation through to export",
+    ],
+    tags: ["Next.js", "ShadCN", "Node.js", "Express", "MongoDB"],
+    image: "/projects/ai-content.png",
+    year: "2025",
+    category: "AI",
+    demoLink: "https://ai-saas-next-react-js.vercel.app/",
+    codeLink: "https://github.com/mubashar-nouman/ai-saas-next-react-js",
   },
   {
     id: 4,
-    title: "Portfolio Template Builder",
-    description: "A drag-and-drop website builder specifically designed for portfolios with customizable templates and design options.",
-    tags: ["React", "Node.js", "GraphQL", "AWS"],
-    image: "https://images.pexels.com/photos/326503/pexels-photo-326503.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    demoLink: "https://example.com",
-    codeLink: "https://github.com",
+    title: "AI Chatbot Provider",
+    tagline: "Trained support bots for any website",
+    description:
+      "A white-label chatbot service that lets site owners train an assistant on their own content, then embed it to answer visitor questions automatically.",
+    highlights: [
+      "Owner-supplied knowledge base powering grounded responses",
+      "Embeddable widget that drops into any existing site",
+      "Per-tenant configuration and conversation logging",
+    ],
+    tags: ["React", "Python", "Flask", "OpenAI API", "MongoDB"],
+    image: "/projects/ai-chatbot-provider.jpeg",
+    year: "2024",
+    category: "AI",
+  },
+  {
+    id: 5,
+    title: "AI Resume Builder",
+    tagline: "Tailored resumes from a job description",
+    description:
+      "A React Native app where users build a profile once, then paste any job description to generate a resume targeted to that role, with multi-step onboarding and LinkedIn job integration.",
+    highlights: [
+      "Multi-step onboarding that captures a reusable candidate profile",
+      "Job-description-aware resume generation and export",
+      "LinkedIn job feed integration for applying in-app",
+    ],
+    tags: ["React Native", "FastAPI", "PostgreSQL", "OpenAI API"],
+    image: "/projects/job-app.jpg",
+    year: "2025",
+    category: "Mobile",
   },
 ];
 
@@ -137,150 +267,38 @@ export const certifications: Certification[] = [
   }
 ];
 
-export const testimonials: Testimonial[] = [
-  {
-    id: 1,
-    name: "Sarah Johnson",
-    position: "CTO",
-    company: "InnovateX",
-    testimonial: "Mubashar is an exceptional developer who consistently delivers high-quality work. His technical expertise and problem-solving abilities have been invaluable to our projects.",
-    avatar: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-  },
-  {
-    id: 2,
-    name: "David Chen",
-    position: "Product Manager",
-    company: "TechSolutions",
-    testimonial: "Working with Mubashar has been a fantastic experience. He not only brings technical excellence but also a deep understanding of user needs and business goals.",
-    avatar: "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-  },
-  {
-    id: 3,
-    name: "Emily Rodriguez",
-    position: "Design Director",
-    company: "CreativeMinds",
-    testimonial: "Mubashar has a rare ability to translate complex design requirements into flawless code. His attention to detail and collaborative approach make him a joy to work with.",
-    avatar: "https://images.pexels.com/photos/1036623/pexels-photo-1036623.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-  }
-];
+/**
+ * Real client testimonials only.
+ *
+ * Add an entry per genuine quote you have permission to publish. The
+ * Testimonials section hides itself entirely while this array is empty, so
+ * nothing fabricated ever ships. Template:
+ *
+ * {
+ *   id: 1,
+ *   name: "Client name",
+ *   position: "Their role",
+ *   company: "Their company",
+ *   testimonial: "What they actually said.",
+ *   avatar: "/testimonials/their-photo.jpg", // or "" to render initials
+ * }
+ */
+export const testimonials: Testimonial[] = [];
 
-export const blogPosts: BlogPost[] = [
-  {
-    id: 1,
-    title: "Building Scalable React Applications: Best Practices",
-    excerpt: "Learn how to structure large-scale React applications for optimal performance and maintainability.",
-    date: "May 15, 2023",
-    readTime: "8 min read",
-    image: "https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    link: "https://example.com/blog/1"
-  },
-  {
-    id: 2,
-    title: "The Future of Web Development: WASM and Beyond",
-    excerpt: "Exploring how WebAssembly is changing the landscape of web development and what it means for JavaScript developers.",
-    date: "April 3, 2023",
-    readTime: "6 min read",
-    image: "https://images.pexels.com/photos/7988116/pexels-photo-7988116.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    link: "https://example.com/blog/2"
-  },
-  {
-    id: 3,
-    title: "Optimizing Database Performance in Node.js Applications",
-    excerpt: "Practical strategies for improving database performance in Node.js applications with real-world examples.",
-    date: "March 12, 2023",
-    readTime: "10 min read",
-    image: "https://images.pexels.com/photos/325229/pexels-photo-325229.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    link: "https://example.com/blog/3"
-  }
-];
+/**
+ * Real posts only. Add entries as you publish; the Blog section hides itself
+ * while this array is empty rather than showing placeholder articles.
+ */
+export const blogPosts: BlogPost[] = [];
 
-export const speakingEvents: SpeakingEvent[] = [
-  {
-    id: 1,
-    title: "The Evolution of Frontend Development",
-    event: "ReactConf 2023",
-    date: "September 2023",
-    description: "A talk on how frontend development has evolved over the years and where it's headed in the future.",
-    link: "https://example.com/talk/1"
-  },
-  {
-    id: 2,
-    title: "Building Accessible Web Applications",
-    event: "A11y Summit",
-    date: "July 2023",
-    description: "Workshop on creating web applications that are accessible to all users, including those with disabilities.",
-    link: "https://example.com/talk/2"
-  },
-  {
-    id: 3,
-    title: "Microservices Architecture with Node.js",
-    event: "NodeCon 2022",
-    date: "November 2022",
-    description: "A deep dive into implementing microservices architecture using Node.js and Docker.",
-    link: "https://example.com/talk/3"
-  }
-];
+/** Real talks only — add entries as you speak at events. */
+export const speakingEvents: SpeakingEvent[] = [];
 
-export const openSourceContributions: OpenSourceContribution[] = [
-  {
-    id: 1,
-    project: "React",
-    description: "Contributed to the React core library by fixing bugs and improving documentation.",
-    link: "https://github.com/facebook/react",
-    category: "Frontend",
-    stars: 190000,
-    pullRequests: 35,
-    image: "https://raw.githubusercontent.com/facebook/react/main/fixtures/dom/public/react-logo.svg",
-    icon: undefined
-  },
-  {
-    id: 2,
-    project: "Tailwind CSS",
-    description: "Created plugins and contributed to the documentation to help improve the developer experience.",
-    link: "https://github.com/tailwindlabs/tailwindcss",
-    category: "CSS Framework",
-    stars: 47000,
-    pullRequests: 12,
-    image: "https://tailwindcss.com/_next/static/media/tailwindcss-logotype-white.e8b47d8e.svg",
-    icon: undefined
-  },
-  {
-    id: 3,
-    project: "Flask",
-    description: "Fixed issues related to routing and contributed to the testing framework.",
-    link: "https://github.com/pallets/flask",
-    category: "Backend",
-    stars: 60000,
-    pullRequests: 7,
-    image: "https://flask.palletsprojects.com/en/2.2.x/_images/flask-logo.png",
-    icon: undefined
-  }
-];
-    
+/** Real contributions only — add entries with links to your actual PRs. */
+export const openSourceContributions: OpenSourceContribution[] = [];
 
-export const awards: Award[] = [
-  {
-    id: 1,
-    title: "Developer of the Year",
-    issuer: "TechAwards",
-    date: "2022",
-    description: "Recognized for outstanding contributions to open-source software and technical innovation."
-  },
-  {
-    id: 2,
-    title: "Best Web Application",
-    issuer: "WebDevConference",
-    date: "2021",
-    description: "Awarded for developing an innovative e-commerce platform with exceptional user experience."
-  },
-  {
-    id: 3,
-    title: "Hackathon Champion",
-    issuer: "Global Code Challenge",
-    date: "2020",
-    description: "First place in a 48-hour hackathon for creating a solution to improve remote learning."
-  }
-];
+/** Real awards only — add entries you can evidence. */
+export const awards: Award[] = [];
 
 export const hobbies: Hobby[] = [
   {

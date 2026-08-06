@@ -1,4 +1,4 @@
-import { ArrowUpRight, Code2, Layers3, MapPin } from 'lucide-react';
+import { ArrowUpRight, Code2, Layers3, MapPin, MessageSquare } from 'lucide-react';
 import Section from '../ui/Section';
 
 const About = () => {
@@ -17,8 +17,8 @@ const About = () => {
   return (
     <Section
       id="about"
-      title="About Me"
-      subtitle="Senior Full Stack Developer specializing in AI-powered SaaS applications"
+      title="Who You'd Be Working With"
+      subtitle="Senior Full Stack Engineer specializing in AI-powered SaaS applications"
       className="bg-zinc-100 dark:bg-zinc-950"
     >
       <div className="mx-auto max-w-6xl">
@@ -37,20 +37,24 @@ const About = () => {
               </div>
 
               <h3 className="text-xl font-bold">Mubashar Nouman</h3>
-              <p className="mt-1 text-sm font-medium text-orange-400">Senior Full Stack Developer</p>
+              <p className="mt-1 text-sm font-medium text-orange-400">Senior Full Stack Engineer</p>
 
               <div className="mt-7 space-y-4 border-t border-white/10 pt-6">
                 <div className="flex items-center gap-3 text-sm text-zinc-300">
-                  <MapPin size={17} className="text-orange-400" />
-                  Lahore, Pakistan
+                  <MapPin size={17} className="flex-shrink-0 text-orange-400" />
+                  Lahore, Pakistan — working across US & EU hours
                 </div>
                 <div className="flex items-center gap-3 text-sm text-zinc-300">
-                  <Code2 size={17} className="text-orange-400" />
+                  <Code2 size={17} className="flex-shrink-0 text-orange-400" />
                   4+ years of experience
                 </div>
                 <div className="flex items-center gap-3 text-sm text-zinc-300">
-                  <Layers3 size={17} className="text-orange-400" />
+                  <Layers3 size={17} className="flex-shrink-0 text-orange-400" />
                   AI-powered SaaS products
+                </div>
+                <div className="flex items-center gap-3 text-sm text-zinc-300">
+                  <MessageSquare size={17} className="flex-shrink-0 text-orange-400" />
+                  Fluent English, weekly demos
                 </div>
               </div>
 
@@ -66,15 +70,22 @@ const About = () => {
               Professional profile
             </p>
             <h3 className="mt-3 text-xl font-bold leading-snug text-zinc-900 dark:text-white">
-              Building scalable AI SaaS products from idea to production.
+              One engineer who can take your product from idea to production.
             </h3>
 
             <div className="mt-5 space-y-4 leading-relaxed text-zinc-600 dark:text-zinc-300">
               <p>
-                With 4+ years of experience, I build production-ready AI SaaS applications using React, Next.js, Node.js, Python, and modern databases.
+                Over 4+ years I've built AI SaaS platforms, web apps and mobile apps end to end — most recently
+                SkillPet, a gamified learning platform with streaks, achievements and subscription billing.
               </p>
               <p>
-                I handle architecture, AI integrations, APIs, authentication, subscriptions, dashboards, performance, and deployment while maintaining clean, secure code.
+                You don't need to assemble a team. I cover architecture, AI integrations, APIs, authentication,
+                subscriptions, dashboards, performance and deployment — and I write code your next developer can
+                actually pick up.
+              </p>
+              <p>
+                I work in weekly sprints with a demo at the end of each one, so you see real progress instead of
+                status updates.
               </p>
             </div>
 

@@ -4,10 +4,13 @@ import { blogPosts } from '../../data';
 import { Calendar, Clock, ArrowRight } from 'lucide-react';
 
 const Blog: React.FC = () => {
+  // Renders nothing until real published posts exist in the data file.
+  if (blogPosts.length === 0) return null;
+
   return (
-    <Section 
-      id="blog" 
-      title="Latest Blog Posts" 
+    <Section
+      id="blog"
+      title="Latest Blog Posts"
       subtitle="Technical articles and insights"
       className="bg-zinc-50 dark:bg-zinc-900"
     >

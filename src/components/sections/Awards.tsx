@@ -4,9 +4,12 @@ import { awards } from '../../data';
 import { Trophy } from 'lucide-react';
 
 const Awards: React.FC = () => {
+  // Renders nothing until real awards exist in the data file.
+  if (awards.length === 0) return null;
+
   return (
-    <Section 
-      id="awards" 
+    <Section
+      id="awards"
       title="Awards & Recognition" 
       subtitle="Achievements and accolades"
       className="bg-gray-50 dark:bg-zinc-900"

@@ -8,10 +8,13 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 
 const Testimonials: React.FC = () => {
+  // Renders nothing until real, publishable client quotes exist in the data file.
+  if (testimonials.length === 0) return null;
+
   return (
-    <Section 
-      id="testimonials" 
-      title="Client Testimonials" 
+    <Section
+      id="testimonials"
+      title="Client Testimonials"
       subtitle="What people say about my work"
       className="bg-zinc-100 dark:bg-zinc-950"
     >
@@ -40,14 +43,24 @@ const Testimonials: React.FC = () => {
                 </p>
                 
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full overflow-hidden ring-2 ring-orange-300 dark:ring-orange-500/30">
-                    <img 
-                      src={testimonial.avatar} 
-                      alt={testimonial.name} 
-                      loading="lazy"
-                      decoding="async"
-                      className="w-full h-full object-cover"
-                    />
+                  <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center overflow-hidden rounded-full bg-orange-100 ring-2 ring-orange-300 dark:bg-orange-500/20 dark:ring-orange-500/30">
+                    {testimonial.avatar ? (
+                      <img
+                        src={testimonial.avatar}
+                        alt={testimonial.name}
+                        loading="lazy"
+                        decoding="async"
+                        className="h-full w-full object-cover"
+                      />
+                    ) : (
+                      <span className="text-sm font-bold text-orange-700 dark:text-orange-300">
+                        {testimonial.name
+                          .split(' ')
+                          .map((part) => part[0])
+                          .slice(0, 2)
+                          .join('')}
+                      </span>
+                    )}
                   </div>
                   <div>
                     <h4 className="font-semibold text-zinc-900 dark:text-white">
