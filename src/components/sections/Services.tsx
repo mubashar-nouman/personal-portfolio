@@ -18,7 +18,7 @@ const Services = () => {
       id="services"
       title="How I Can Help"
       subtitle="Whether you need a full product built or an existing one taken further, here's what I take on for clients."
-      className="bg-zinc-50 dark:bg-zinc-900"
+      className="bg-white dark:bg-zinc-950"
     >
       <div className="mx-auto max-w-6xl">
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2">

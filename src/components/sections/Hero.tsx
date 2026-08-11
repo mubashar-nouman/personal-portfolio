@@ -1,9 +1,9 @@
-import { ArrowRight, Download, Github, Instagram, Linkedin, Mail } from 'lucide-react';
+import { FileText, Github, Instagram, Linkedin, Mail } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { projects } from '@/data';
 
-const CV_URL = 'https://drive.google.com/uc?export=download&id=1CSryFZ4PYKRPNb7xOhs-GnIWgtY2IKwf';
+const RESUME_URL = "/projects/Mubashar's_Resume.pdf";
 
 const socials = [
   { icon: Github, label: 'GitHub', href: 'https://github.com/mubashar-nouman' },
@@ -33,7 +33,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative overflow-hidden border-b border-zinc-200 bg-white pt-24 dark:border-zinc-800 dark:bg-zinc-950 md:pt-28"
+      className="relative overflow-hidden border-b border-zinc-200 bg-zinc-50 pt-24 dark:border-zinc-800 dark:bg-zinc-900 md:pt-28"
     >
       {/* Warm wash behind the portrait side, anchoring the yellow. */}
       <div
@@ -71,14 +71,10 @@ const Hero = () => {
                 <Mail />
                 Start a project
               </Button>
-              <Button variant="outline" size="lg" onClick={() => scrollTo('#projects')}>
-                View my work
-                <ArrowRight />
-              </Button>
-              <Button asChild variant="ghost" size="lg">
-                <a href={CV_URL} target="_blank" rel="noopener noreferrer">
-                  <Download />
-                  CV
+              <Button asChild variant="outline" size="lg">
+                <a href={RESUME_URL} target="_blank" rel="noopener noreferrer">
+                  <FileText />
+                  View Resume
                 </a>
               </Button>
             </div>
