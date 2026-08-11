@@ -112,6 +112,25 @@ export const projects: Project[] = [
     demoLink: "https://zygenai.com/",
   },
   {
+    id: 8,
+    title: "ScriptLix",
+    tagline: "A marketplace for production-ready screenplays",
+    description:
+      "A curated catalog where independent filmmakers read screenplays free online and buy the ones they want to produce. Every purchase delivers the script in PDF, TXT and Fountain, so it drops straight into a writer's existing toolchain.",
+    highlights: [
+      "Browsable catalog with genre collections, editor's picks and trending scripts",
+      "Free in-browser reader gated against paid downloads",
+      "Checkout issuing PDF, TXT and Fountain exports per purchase",
+      "Accounts with a personal library of purchased scripts",
+      "Editorial section for craft guides and industry resources",
+    ],
+    tags: ["Next.js", "TypeScript", "Node.js", "PostgreSQL", "Stripe", "Tailwind CSS"],
+    image: "/projects/scriptlix.jpg",
+    year: "2025",
+    category: "Web",
+    demoLink: "https://scriptlix.com/",
+  },
+  {
     id: 1,
     title: "SkillPet",
     tagline: "Gamified AI learning platform with subscriptions",
