@@ -6,85 +6,84 @@
  * shadcn/ui token layer.
  *
  * The components are used verbatim from the shadcn registry, so they reference
- * --primary, --border, --input and friends. Those variables are set to the
- * site's existing zinc/orange palette here, which keeps the components stock
- * while the design stays unchanged.
+ * --primary, --border, --input and friends. These variables are set to the
+ * site's existing zinc/orange palette, which keeps the components stock while
+ * the design stays unchanged.
+ *
+ * Declared outside @layer base on purpose: a bare :root is guaranteed to
+ * resolve regardless of how Tailwind orders its layers.
  */
+:root {
+  --background: 0 0% 100%;
+  --foreground: 240 10% 4%;
+
+  --card: 0 0% 100%;
+  --card-foreground: 240 10% 4%;
+
+  --popover: 0 0% 100%;
+  --popover-foreground: 240 10% 4%;
+
+  /* orange-600 */
+  --primary: 21 90% 48%;
+  --primary-foreground: 0 0% 100%;
+
+  --secondary: 240 5% 96%;
+  --secondary-foreground: 240 5% 26%;
+
+  --muted: 240 5% 96%;
+  --muted-foreground: 240 4% 46%;
+
+  --accent: 240 5% 96%;
+  --accent-foreground: 240 6% 10%;
+
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+
+  --border: 240 6% 90%;
+  --input: 240 5% 84%;
+  --ring: 21 90% 48%;
+
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: 240 6% 10%;
+  --foreground: 0 0% 98%;
+
+  --card: 240 4% 16%;
+  --card-foreground: 0 0% 98%;
+
+  --popover: 240 4% 16%;
+  --popover-foreground: 0 0% 98%;
+
+  /* orange-500 reads better on dark */
+  --primary: 25 95% 53%;
+  --primary-foreground: 0 0% 100%;
+
+  --secondary: 240 4% 28%;
+  --secondary-foreground: 240 5% 84%;
+
+  --muted: 240 4% 16%;
+  --muted-foreground: 240 5% 65%;
+
+  --accent: 240 4% 20%;
+  --accent-foreground: 0 0% 98%;
+
+  --destructive: 0 63% 51%;
+  --destructive-foreground: 0 0% 98%;
+
+  --border: 240 4% 26%;
+  --input: 240 4% 26%;
+  --ring: 25 95% 53%;
+}
+
 /**
- * The token-driven variants (outline, ghost, link) inherit their text colour
- * rather than setting one, so the document needs a foreground colour for them
- * to be legible. Without this they fall back to black in dark mode.
+ * The outline, ghost and link variants inherit their text colour rather than
+ * setting one, so the document needs a foreground colour for them to be
+ * legible. Without this they fall back to black in dark mode.
  */
 @layer base {
   body {
     @apply text-foreground;
-  }
-}
-
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 4%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 4%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 4%;
-
-    /* orange-600 */
-    --primary: 21 90% 48%;
-    --primary-foreground: 0 0% 100%;
-
-    /* zinc-100 / zinc-700 */
-    --secondary: 240 5% 96%;
-    --secondary-foreground: 240 5% 26%;
-
-    --muted: 240 5% 96%;
-    --muted-foreground: 240 4% 46%;
-
-    --accent: 240 5% 96%;
-    --accent-foreground: 240 6% 10%;
-
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
-
-    /* zinc-200 / zinc-300 */
-    --border: 240 6% 90%;
-    --input: 240 5% 84%;
-    --ring: 21 90% 48%;
-
-    --radius: 0.5rem;
-  }
-
-  .dark {
-    --background: 240 6% 10%;
-    --foreground: 0 0% 98%;
-
-    --card: 240 4% 16%;
-    --card-foreground: 0 0% 98%;
-
-    --popover: 240 4% 16%;
-    --popover-foreground: 0 0% 98%;
-
-    /* orange-500 reads better on dark */
-    --primary: 25 95% 53%;
-    --primary-foreground: 0 0% 100%;
-
-    --secondary: 240 4% 28%;
-    --secondary-foreground: 240 5% 84%;
-
-    --muted: 240 4% 16%;
-    --muted-foreground: 240 5% 65%;
-
-    --accent: 240 4% 20%;
-    --accent-foreground: 0 0% 98%;
-
-    --destructive: 0 63% 51%;
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 240 4% 26%;
-    --input: 240 4% 26%;
-    --ring: 25 95% 53%;
   }
 }
