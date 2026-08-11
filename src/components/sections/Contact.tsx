@@ -1,187 +1,247 @@
-import { Check, Linkedin, Mail, MapPin, Phone, Send } from 'lucide-react';
+import React from 'react';
+import Section from '../ui/Section';
+import { Mail, Phone, MapPin, Send, Check, Linkedin } from 'lucide-react';
 import { useForm, ValidationError } from '@formspree/react';
 
-import Section from '@/components/layout/Section';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
-import { cn } from '@/lib/utils';
+const inputClasses =
+  'w-full px-4 py-2 rounded-md border bg-white dark:bg-zinc-900 border-zinc-300 dark:border-zinc-600 text-zinc-900 dark:text-white placeholder:text-zinc-400 focus:ring-2 focus:ring-orange-500 focus:border-transparent';
 
-const details = [
-  {
-    icon: Mail,
-    label: 'Email',
-    value: 'mubashirrnouman@gmail.com',
-    href: 'mailto:mubashirrnouman@gmail.com',
-  },
-  { icon: Phone, label: 'Phone', value: '+92 (308) 7031050', href: 'tel:+923087031050' },
-  {
-    icon: Linkedin,
-    label: 'LinkedIn',
-    value: '/in/mubashar-nouman',
-    href: 'https://linkedin.com/in/mubashar-nouman',
-  },
-  { icon: MapPin, label: 'Location', value: 'Lahore, Pakistan — US & EU hours' },
-];
+const labelClasses = 'block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-1';
 
-const nextSteps = [
-  'I reply within 24 hours, usually sooner.',
-  'We book a free 30-minute call to talk through scope.',
-  'You get a written proposal with timeline and fixed cost.',
-];
-
-/**
- * Native <select> rather than the Radix one: this form posts straight to
- * Formspree, and native controls submit their value without extra wiring.
- */
-const selectClasses =
-  'flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2';
-
-const Contact = () => {
+const Contact: React.FC = () => {
   const [state, handleSubmit] = useForm('mvgogkop');
 
   return (
     <Section
       id="contact"
-      eyebrow="Contact"
-      title="Let's talk about your project"
-      description="Tell me what you're building and I'll reply within 24 hours with honest feedback on scope, timeline and cost."
+      title="Let's Talk About Your Project"
+      subtitle="Tell me what you're building and I'll reply within 24 hours with honest feedback on scope, timeline and cost."
+      className="bg-zinc-100 dark:bg-zinc-950"
     >
-      <div className="grid gap-10 lg:grid-cols-[1fr_1.15fr] lg:gap-16">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        {/* Contact Info Section */}
         <div>
-          <ul className="space-y-5">
-            {details.map((detail) => (
-              <li key={detail.label} className="flex gap-3.5">
-                <detail.icon className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                <div>
-                  <p className="text-sm font-medium">{detail.label}</p>
-                  {detail.href ? (
-                    <a
-                      href={detail.href}
-                      target={detail.href.startsWith('http') ? '_blank' : undefined}
-                      rel={detail.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                      className="text-sm text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
-                    >
-                      {detail.value}
-                    </a>
-                  ) : (
-                    <p className="text-sm text-muted-foreground">{detail.value}</p>
-                  )}
-                </div>
-              </li>
-            ))}
-          </ul>
+          <h3 className="text-xl font-bold text-zinc-900 dark:text-white mb-6">
+            Contact Information
+          </h3>
 
-          <div className="mt-8 rounded-xl border bg-card p-5">
-            <h3 className="text-sm font-semibold">What happens next</h3>
+          <div className="space-y-6">
+            <div className="flex items-start">
+              <div className="bg-orange-100 dark:bg-orange-900/30 text-orange-500 p-3 rounded-full mr-4">
+                <Mail size={20} />
+              </div>
+              <div>
+                <h4 className="font-medium text-zinc-900 dark:text-white">Email</h4>
+                <a href="mailto:mubashirrnouman@gmail.com" className="text-zinc-600 dark:text-zinc-300 hover:text-orange-500 rounded-sm">
+                  mubashirrnouman@gmail.com
+                </a>
+              </div>
+            </div>
+
+            <div className="flex items-start">
+              <div className="bg-orange-100 dark:bg-orange-900/30 text-orange-500 p-3 rounded-full mr-4">
+                <Phone size={20} />
+              </div>
+              <div>
+                <h4 className="font-medium text-zinc-900 dark:text-white">Phone</h4>
+                <a href="tel:+923087031050" className="text-zinc-600 dark:text-zinc-300 hover:text-orange-500 rounded-sm">
+                  +92 (308) 7031050
+                </a>
+              </div>
+            </div>
+
+            <div className="flex items-start">
+              <div className="bg-orange-100 dark:bg-orange-900/30 text-orange-500 p-3 rounded-full mr-4">
+                <Linkedin size={20} />
+              </div>
+              <div>
+                <h4 className="font-medium text-zinc-900 dark:text-white">LinkedIn</h4>
+                <a
+                  href="https://linkedin.com/in/mubashar-nouman"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-zinc-600 dark:text-zinc-300 hover:text-orange-500 rounded-sm"
+                >
+                  /in/mubashar-nouman
+                </a>
+              </div>
+            </div>
+
+            <div className="flex items-start">
+              <div className="bg-orange-100 dark:bg-orange-900/30 text-orange-500 p-3 rounded-full mr-4">
+                <MapPin size={20} />
+              </div>
+              <div>
+                <h4 className="font-medium text-zinc-900 dark:text-white">Location</h4>
+                <p className="text-zinc-600 dark:text-zinc-300">
+                  Lahore, Pakistan — available across US &amp; EU hours
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* What happens next */}
+          <div className="mt-8 rounded-lg border border-zinc-200 bg-white p-5 dark:border-zinc-700 dark:bg-zinc-800">
+            <h4 className="font-medium text-zinc-900 dark:text-white">What happens next</h4>
             <ol className="mt-4 space-y-3">
-              {nextSteps.map((step, index) => (
-                <li key={step} className="flex gap-3 text-sm text-muted-foreground">
-                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-secondary text-[11px] font-semibold text-secondary-foreground">
+              {[
+                'I reply within 24 hours, usually sooner.',
+                'We book a free 30-minute call to talk through scope.',
+                'You get a written proposal with timeline and fixed cost.',
+              ].map((item, index) => (
+                <li key={item} className="flex items-start gap-3 text-sm text-zinc-600 dark:text-zinc-300">
+                  <span className="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-orange-500 text-[11px] font-bold text-white">
                     {index + 1}
                   </span>
-                  <span>{step}</span>
+                  {item}
                 </li>
               ))}
             </ol>
-            <p className="mt-4 border-t pt-4 text-xs text-muted-foreground">
+            <p className="mt-4 border-t border-zinc-100 pt-4 text-xs text-zinc-500 dark:border-zinc-700 dark:text-zinc-400">
               No obligation, and I'll tell you honestly if I'm not the right fit.
             </p>
           </div>
         </div>
 
-        <div className="rounded-xl border bg-card p-6">
-          {state.succeeded ? (
-            <div className="py-8 text-center">
-              <span className="mx-auto flex h-11 w-11 items-center justify-center rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
-                <Check className="h-5 w-5" />
-              </span>
-              <h3 className="mt-5 text-lg font-semibold">Thanks — your details are with me.</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                I'll review what you've sent and reply within 24 hours with next steps. If it's urgent, email me
-                directly at{' '}
-                <a href="mailto:mubashirrnouman@gmail.com" className="text-primary underline-offset-4 hover:underline">
-                  mubashirrnouman@gmail.com
-                </a>
-                .
-              </p>
-            </div>
-          ) : (
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="grid gap-4 sm:grid-cols-2">
-                <div className="space-y-1.5">
-                  <Label htmlFor="name">Your name *</Label>
-                  <Input id="name" name="name" autoComplete="name" required />
-                  <ValidationError prefix="Name" field="name" errors={state.errors} className="text-sm text-destructive" />
+        {/* Contact Form Section */}
+        <div>
+          <div className="bg-white dark:bg-zinc-800 rounded-lg p-6 border border-zinc-200 dark:border-zinc-700">
+            {state.succeeded ? (
+              <div className="text-center py-8">
+                <div className="flex items-center justify-center mb-6">
+                  <div className="bg-green-100 dark:bg-green-900/30 text-green-500 p-4 rounded-full">
+                    <Check size={24} />
+                  </div>
                 </div>
-
-                <div className="space-y-1.5">
-                  <Label htmlFor="email">Your email *</Label>
-                  <Input id="email" name="email" type="email" autoComplete="email" required />
-                  <ValidationError prefix="Email" field="email" errors={state.errors} className="text-sm text-destructive" />
-                </div>
+                <h3 className="text-xl font-bold text-zinc-900 dark:text-white mb-2">
+                  Thanks — your details are with me.
+                </h3>
+                <p className="text-zinc-600 dark:text-zinc-300">
+                  I'll review what you've sent and reply within 24 hours with next steps. If it's urgent, email me
+                  directly at{' '}
+                  <a href="mailto:mubashirrnouman@gmail.com" className="text-orange-500 hover:underline">
+                    mubashirrnouman@gmail.com
+                  </a>
+                  .
+                </p>
               </div>
+            ) : (
+              <>
+                <h3 className="text-xl font-bold text-zinc-900 dark:text-white mb-6">
+                  Send a Message
+                </h3>
+                <form onSubmit={handleSubmit}>
+                  <div className="mb-4">
+                    <label htmlFor="name" className={labelClasses}>
+                      Your Name *
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      autoComplete="name"
+                      className={inputClasses}
+                      required
+                    />
+                    <ValidationError prefix="Name" field="name" errors={state.errors} className="mt-1 text-sm text-red-500" />
+                  </div>
 
-              <div className="space-y-1.5">
-                <Label htmlFor="company">Company</Label>
-                <Input id="company" name="company" autoComplete="organization" />
-              </div>
+                  <div className="mb-4">
+                    <label htmlFor="email" className={labelClasses}>
+                      Your Email *
+                    </label>
+                    <input
+                      id="email"
+                      type="email"
+                      name="email"
+                      autoComplete="email"
+                      className={inputClasses}
+                      required
+                    />
+                    <ValidationError prefix="Email" field="email" errors={state.errors} className="mt-1 text-sm text-red-500" />
+                  </div>
 
-              <div className="grid gap-4 sm:grid-cols-2">
-                <div className="space-y-1.5">
-                  <Label htmlFor="projectType">Project type</Label>
-                  <select id="projectType" name="projectType" defaultValue="" className={cn(selectClasses)}>
-                    <option value="" disabled>
-                      Select one
-                    </option>
-                    <option>AI / SaaS product</option>
-                    <option>Web application</option>
-                    <option>Mobile app</option>
-                    <option>MVP build</option>
-                    <option>Existing project / other</option>
-                  </select>
-                </div>
+                  <div className="mb-4">
+                    <label htmlFor="company" className={labelClasses}>
+                      Company
+                    </label>
+                    <input
+                      type="text"
+                      id="company"
+                      name="company"
+                      autoComplete="organization"
+                      className={inputClasses}
+                    />
+                    <ValidationError prefix="Company" field="company" errors={state.errors} className="mt-1 text-sm text-red-500" />
+                  </div>
 
-                <div className="space-y-1.5">
-                  <Label htmlFor="budget">Budget range</Label>
-                  <select id="budget" name="budget" defaultValue="" className={cn(selectClasses)}>
-                    <option value="" disabled>
-                      Select one
-                    </option>
-                    <option>Under $2,000</option>
-                    <option>$2,000 – $5,000</option>
-                    <option>$5,000 – $10,000</option>
-                    <option>$10,000+</option>
-                    <option>Not sure yet</option>
-                  </select>
-                </div>
-              </div>
+                  <div className="mb-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
+                    <div>
+                      <label htmlFor="projectType" className={labelClasses}>
+                        Project type
+                      </label>
+                      <select id="projectType" name="projectType" className={inputClasses} defaultValue="">
+                        <option value="" disabled>
+                          Select one
+                        </option>
+                        <option>AI / SaaS product</option>
+                        <option>Web application</option>
+                        <option>Mobile app</option>
+                        <option>MVP build</option>
+                        <option>Existing project / other</option>
+                      </select>
+                    </div>
 
-              <div className="space-y-1.5">
-                <Label htmlFor="message">What are you building? *</Label>
-                <Textarea
-                  id="message"
-                  name="message"
-                  rows={5}
-                  required
-                  placeholder="A short description of the product, the problem it solves, and any deadline you're working towards."
-                />
-                <ValidationError prefix="Message" field="message" errors={state.errors} className="text-sm text-destructive" />
-              </div>
+                    <div>
+                      <label htmlFor="budget" className={labelClasses}>
+                        Budget range
+                      </label>
+                      <select id="budget" name="budget" className={inputClasses} defaultValue="">
+                        <option value="" disabled>
+                          Select one
+                        </option>
+                        <option>Under $2,000</option>
+                        <option>$2,000 – $5,000</option>
+                        <option>$5,000 – $10,000</option>
+                        <option>$10,000+</option>
+                        <option>Not sure yet</option>
+                      </select>
+                    </div>
+                  </div>
 
-              <Button type="submit" className="w-full" disabled={state.submitting}>
-                <Send />
-                {state.submitting ? 'Sending…' : 'Send project details'}
-              </Button>
+                  <div className="mb-6">
+                    <label htmlFor="message" className={labelClasses}>
+                      What are you building? *
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      className={inputClasses}
+                      placeholder="A short description of the product, the problem it solves, and any deadline you're working towards."
+                      required
+                      rows={5}
+                    />
+                    <ValidationError prefix="Message" field="message" errors={state.errors} className="mt-1 text-sm text-red-500" />
+                  </div>
 
-              <p className="text-center text-xs text-muted-foreground">
-                I reply within 24 hours. Your details stay private.
-              </p>
+                  <button
+                    type="submit"
+                    className="w-full rounded-md flex justify-center py-3 items-center bg-orange-500 hover:bg-orange-600 text-white font-medium transition-colors disabled:opacity-60 disabled:pointer-events-none"
+                    disabled={state.submitting}
+                  >
+                    <Send size={18} className="mr-2" />
+                    {state.submitting ? 'Sending...' : 'Send project details'}
+                  </button>
 
-              <ValidationError errors={state.errors} className="text-center text-sm text-destructive" />
-            </form>
-          )}
+                  <p className="mt-3 text-center text-xs text-zinc-500 dark:text-zinc-400">
+                    I reply within 24 hours. Your details stay private.
+                  </p>
+
+                  <ValidationError errors={state.errors} className="mt-3 text-sm text-red-500 text-center" />
+                </form>
+              </>
+            )}
+          </div>
         </div>
       </div>
     </Section>

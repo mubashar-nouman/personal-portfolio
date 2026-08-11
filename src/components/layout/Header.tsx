@@ -1,124 +1,130 @@
-import { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
-
 import ThemeToggle from './ThemeToggle';
-import { Button } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
 
-const navItems = [
-  { name: 'Work', href: '#projects' },
-  { name: 'Services', href: '#services' },
-  { name: 'About', href: '#about' },
-  { name: 'Experience', href: '#experience' },
-];
-
-const Header = () => {
+const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [activeId, setActiveId] = useState('');
+
+  const navItems = [
+    { name: 'Services', href: '#services' },
+    { name: 'Work', href: '#projects' },
+    { name: 'About', href: '#about' },
+    { name: 'Process', href: '#process' },
+    { name: 'Experience', href: '#experience' },
+  ];
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 8);
-    handleScroll();
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+
+    window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Highlight whichever section currently occupies the upper half of the viewport.
-  useEffect(() => {
-    const ids = navItems.map((item) => item.href.slice(1));
-    const sections = ids
-      .map((id) => document.getElementById(id))
-      .filter((el): el is HTMLElement => el !== null);
-
-    if (sections.length === 0) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
-
-        if (visible[0]) setActiveId(visible[0].target.id);
-      },
-      { rootMargin: '-10% 0px -55% 0px', threshold: 0 }
-    );
-
-    sections.forEach((section) => observer.observe(section));
-    return () => observer.disconnect();
-  }, []);
+  const scrollToSection = (href: string) => {
+    setIsMenuOpen(false);
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
-    <header
-      className={cn(
-        'fixed top-0 z-50 w-full transition-colors duration-300',
-        isScrolled ? 'border-b bg-background/85 backdrop-blur-md' : 'bg-transparent'
-      )}
+    <header 
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        isScrolled 
+          ? 'bg-white/90 dark:bg-dark-800/90 backdrop-blur-sm shadow-sm' 
+          : 'bg-transparent'
+      }`}
     >
-      <div className="container">
-        <div className="flex h-16 items-center justify-between">
-          <a href="#home" className="text-base font-semibold tracking-tight">
-            Mubashar<span className="text-primary">.</span>
+      <div className="container mx-auto px-4">
+        <div className="flex items-center justify-between py-4">
+          {/* Logo */}
+          <a 
+            href="#home" 
+            className="text-xl font-bold text-gray-900 dark:text-white"
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToSection('#home');
+            }}
+          >
+            Mubashar<span className="text-orange-500">.</span>
           </a>
 
-          <nav className="hidden items-center gap-1 md:flex">
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center space-x-6 lg:space-x-8">
             {navItems.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
-                className={cn(
-                  'rounded-md px-3 py-2 text-sm font-medium transition-colors',
-                  activeId === item.href.slice(1)
-                    ? 'text-foreground'
-                    : 'text-muted-foreground hover:text-foreground'
-                )}
+                className="text-gray-700 dark:text-gray-200 hover:text-orange-500 dark:hover:text-orange-400 font-medium transition-colors duration-200"
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection(item.href);
+                }}
               >
                 {item.name}
               </a>
             ))}
-
-            <div className="ml-2 flex items-center gap-2">
-              <ThemeToggle />
-              <Button asChild size="sm">
-                <a href="#contact">Hire me</a>
-              </Button>
-            </div>
+            <a
+              href="#contact"
+              className="rounded-lg bg-orange-600 px-4 py-2 font-medium text-white transition-colors duration-200 hover:bg-orange-700"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection('#contact');
+              }}
+            >
+              Hire me
+            </a>
+            <ThemeToggle />
           </nav>
 
-          <div className="flex items-center gap-1 md:hidden">
+          {/* Mobile Navigation Toggle */}
+          <div className="flex items-center gap-4 md:hidden">
             <ThemeToggle />
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setIsMenuOpen((open) => !open)}
-              aria-label="Toggle menu"
-              aria-expanded={isMenuOpen}
+            <button
+              className="text-gray-700 dark:text-gray-200 hover:text-orange-500 dark:hover:text-orange-400"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label="Toggle mobile menu"
             >
-              {isMenuOpen ? <X /> : <Menu />}
-            </Button>
+              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
           </div>
         </div>
       </div>
 
+      {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="border-b bg-background md:hidden">
-          <nav className="container flex flex-col py-3">
-            {navItems.map((item) => (
+        <div className="md:hidden bg-white dark:bg-dark-800 shadow-md">
+          <div className="container mx-auto px-4 py-4">
+            <nav className="flex flex-col space-y-4">
+              {navItems.map((item) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className="text-gray-700 dark:text-gray-200 hover:text-orange-500 dark:hover:text-orange-400 font-medium transition-colors duration-200 py-2"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection(item.href);
+                  }}
+                >
+                  {item.name}
+                </a>
+              ))}
               <a
-                key={item.name}
-                href={item.href}
-                onClick={() => setIsMenuOpen(false)}
-                className="rounded-md px-1 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+                href="#contact"
+                className="rounded-lg bg-orange-600 px-4 py-3 text-center font-medium text-white transition-colors duration-200 hover:bg-orange-700"
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection('#contact');
+                }}
               >
-                {item.name}
-              </a>
-            ))}
-            <Button asChild className="mt-3">
-              <a href="#contact" onClick={() => setIsMenuOpen(false)}>
                 Hire me
               </a>
-            </Button>
-          </nav>
+            </nav>
+          </div>
         </div>
       )}
     </header>

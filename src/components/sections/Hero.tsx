@@ -1,106 +1,191 @@
-import { ArrowRight, Download, Github, Linkedin, Mail } from 'lucide-react';
+import { ArrowDown, Github, Linkedin, Instagram, Mail, Download, Check, Zap, Star } from 'lucide-react';
 
-import { Button } from '@/components/ui/button';
+const Hero = () => {
+  const scrollTo = (selector: string) => {
+    document.querySelector(selector)?.scrollIntoView({ behavior: 'smooth' });
+  };
 
-const CV_URL = 'https://drive.google.com/uc?export=download&id=1CSryFZ4PYKRPNb7xOhs-GnIWgtY2IKwf';
+  const scrollToAbout = () => scrollTo('#about');
+  const scrollToContact = () => scrollTo('#contact');
+  const scrollToProjects = () => scrollTo('#projects');
 
-const stats = [
-  { value: '4+', label: 'Years shipping' },
-  { value: '6', label: 'Products live' },
-  { value: '24h', label: 'Reply time' },
-];
+  return (
+    <section
+      id="home"
+      className="relative min-h-screen flex items-center pt-16 overflow-hidden bg-white dark:bg-zinc-900"
+    >
+      {/* Background Elements */}
+      <div className="absolute inset-0">
+        {/* Gradient Orbs */}
+        <div className="absolute top-20 left-10 w-48 h-48 md:w-72 md:h-72 bg-orange-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-10 w-64 h-64 md:w-96 md:h-96 bg-red-500/10 rounded-full blur-3xl"></div>
+        
+        {/* Grid Pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:30px_30px] md:bg-[size:50px_50px] dark:bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)]"></div>
+      </div>
 
-/**
- * Deliberately not full-viewport: the previous hero pushed the work itself
- * below the fold, which is the one thing a visitor actually came to see.
- */
-const Hero = () => (
-  <section id="home" className="border-b bg-background pt-28 md:pt-32">
-    <div className="container pb-14 md:pb-20">
-      <div className="grid items-center gap-10 lg:grid-cols-[1.35fr_1fr] lg:gap-16">
-        <div>
-          <p className="inline-flex items-center gap-2 text-sm text-muted-foreground">
-            <span className="relative flex h-2 w-2" aria-hidden="true">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-60" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
-            </span>
-            Available for new client projects
-          </p>
-
-          <h1 className="mt-5 text-4xl font-semibold leading-[1.08] tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-            I build AI products
-            <br />
-            that ship.
-          </h1>
-
-          <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground">
-            I'm Mubashar, a full stack engineer specialising in AI-powered SaaS. Four years turning ideas into
-            production software with React, Next.js, Node.js and Python — from first scope through to launch.
-          </p>
-
-          <div className="mt-8 flex flex-wrap items-center gap-3">
-            <Button asChild size="lg">
-              <a href="#contact">
-                <Mail />
-                Start a project
-              </a>
-            </Button>
-            <Button asChild variant="outline" size="lg">
-              <a href="#projects">
-                View my work
-                <ArrowRight />
-              </a>
-            </Button>
-            <Button asChild variant="ghost" size="lg">
-              <a href={CV_URL} target="_blank" rel="noopener noreferrer">
-                <Download />
-                CV
-              </a>
-            </Button>
-          </div>
-
-          <div className="mt-10 flex items-center gap-6">
-            <div className="flex gap-1">
-              <Button asChild variant="ghost" size="icon" aria-label="GitHub">
-                <a href="https://github.com/mubashar-nouman" target="_blank" rel="noopener noreferrer">
-                  <Github />
-                </a>
-              </Button>
-              <Button asChild variant="ghost" size="icon" aria-label="LinkedIn">
-                <a href="https://linkedin.com/in/mubashar-nouman" target="_blank" rel="noopener noreferrer">
-                  <Linkedin />
-                </a>
-              </Button>
+      <div className="container mx-auto px-4 z-10 py-8 lg:py-0">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+          {/* Left Side - Content */}
+          <div className="space-y-4 md:space-y-6 text-center lg:text-left order-1 lg:order-1">
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gradient-to-r from-orange-100 to-red-100 dark:from-orange-900/30 dark:to-red-900/30 border border-orange-200 dark:border-orange-800">
+              <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></div>
+              <span className="text-xs font-medium text-orange-800 dark:text-orange-200">
+                Available for new client projects
+              </span>
             </div>
 
-            <div className="h-8 w-px bg-border" aria-hidden="true" />
+            {/* Main Heading */}
+            <div className="space-y-2 md:space-y-3">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+                <span className="text-zinc-900 dark:text-zinc-100">Hi, I'm </span>
+                <span className="bg-gradient-to-r from-orange-600 via-red-600 to-orange-600 bg-clip-text text-transparent">
+                  Mubashar
+                </span>
+              </h1>
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-zinc-800 dark:text-zinc-200">
+                Senior Full Stack Engineer
+              </h2>
+            </div>
 
-            <dl className="flex gap-6">
-              {stats.map((stat) => (
-                <div key={stat.label}>
-                  <dt className="sr-only">{stat.label}</dt>
-                  <dd>
-                    <span className="block text-lg font-semibold text-foreground">{stat.value}</span>
-                    <span className="text-xs text-muted-foreground">{stat.label}</span>
-                  </dd>
-                </div>
+            {/* Description */}
+            <p className="text-base sm:text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-lg mx-auto lg:mx-0">
+              I build AI-powered SaaS products end to end. 4+ years turning ideas into production software with React,
+              Next.js, Node.js and Python.
+            </p>
+
+            {/* Trust markers */}
+            <ul className="flex flex-wrap gap-x-4 gap-y-1.5 justify-center lg:justify-start text-sm text-zinc-600 dark:text-zinc-400">
+              {['AI & LLM integrations', 'Web, mobile & API'].map((item) => (
+                <li key={item} className="flex items-center gap-1.5">
+                  <Check size={15} className="text-orange-500 flex-shrink-0" />
+                  {item}
+                </li>
               ))}
-            </dl>
-          </div>
-        </div>
+            </ul>
 
-        <div className="order-first lg:order-last">
-          <div className="relative mx-auto w-52 sm:w-64 lg:w-full lg:max-w-sm">
-            <img
-              src="/mine.jpg"
-              alt="Mubashar Nouman"
-              className="aspect-square w-full rounded-2xl border object-cover"
-            />
+            {/* Action Buttons */}
+            <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
+              <button
+                onClick={scrollToContact}
+                className="group inline-flex items-center justify-center px-6 py-3 rounded-lg bg-gradient-to-r from-orange-600 to-red-600 text-white font-medium hover:from-orange-700 hover:to-red-700 transition-all duration-300 shadow-lg hover:shadow-xl"
+              >
+                <Mail size={18} className="mr-2 group-hover:rotate-12 transition-transform duration-300" />
+                Hire me
+              </button>
+              <button
+                onClick={scrollToProjects}
+                className="group inline-flex items-center justify-center px-6 py-3 rounded-lg border-2 border-zinc-300 dark:border-zinc-600 text-zinc-700 dark:text-zinc-300 font-medium hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:border-orange-400 dark:hover:border-orange-500 transition-all duration-300"
+              >
+                View my work
+              </button>
+              <a
+                href="https://drive.google.com/uc?export=download&id=1CSryFZ4PYKRPNb7xOhs-GnIWgtY2IKwf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center justify-center px-6 py-3 rounded-lg text-zinc-600 dark:text-zinc-400 font-medium hover:text-orange-600 dark:hover:text-orange-400 transition-all duration-300"
+              >
+                <Download size={18} className="mr-2" />
+                CV
+              </a>
+            </div>
+
+            {/* Social Links */}
+            <div className="flex items-center gap-4 justify-center lg:justify-start">
+              <span className="text-xs text-zinc-500 dark:text-zinc-400 font-medium">Connect with me:</span>
+              <div className="flex gap-2">
+                <a
+                  href="https://github.com/mubashar-nouman"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group p-2.5 rounded-lg bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400 hover:text-orange-600 dark:hover:text-orange-400 hover:border-orange-300 dark:hover:border-orange-600 hover:bg-orange-50 dark:hover:bg-orange-900/20 transition-all duration-300 hover:scale-110"
+                >
+                  <Github size={18} className="group-hover:rotate-12 transition-transform duration-300" />
+                </a>
+                <a
+                  href="https://linkedin.com/in/mubashar-nouman"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group p-2.5 rounded-lg bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400 hover:text-orange-600 dark:hover:text-orange-400 hover:border-orange-300 dark:hover:border-orange-600 hover:bg-orange-50 dark:hover:bg-orange-900/20 transition-all duration-300 hover:scale-110"
+                >
+                  <Linkedin size={18} className="group-hover:rotate-12 transition-transform duration-300" />
+                </a>
+                <a
+                  href="https://instagram.com/mubashar_dev"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group p-2.5 rounded-lg bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400 hover:text-orange-600 dark:hover:text-orange-400 hover:border-orange-300 dark:hover:border-orange-600 hover:bg-orange-50 dark:hover:bg-orange-900/20 transition-all duration-300 hover:scale-110"
+                >
+                  <Instagram size={18} className="group-hover:rotate-12 transition-transform duration-300" />
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Side - Clean Professional Image */}
+          <div className="flex justify-center lg:justify-end order-2 lg:order-2 lg:pr-8">
+            <div className="relative w-64 sm:w-80">
+              {/* Subtle Background Glow */}
+              <div className="absolute inset-0 w-64 h-64 sm:w-80 sm:h-80 bg-gradient-to-br from-orange-500/8 to-red-500/8 rounded-full blur-2xl"></div>
+              
+              {/* Main Image Container */}
+              <div className="relative w-64 h-64 sm:w-80 sm:h-80">
+                {/* Clean Border Frame */}
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-orange-500 to-red-500 p-0.5">
+                  <div className="w-full h-full rounded-2xl bg-white dark:bg-zinc-900 flex items-center justify-center">
+                    <div className="w-full h-full rounded-2xl overflow-hidden">
+                      <img
+                        src="/mine.jpg"
+                        alt="Mubashar Nouman"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Clean Shadow */}
+                <div className="absolute inset-0 rounded-2xl shadow-xl"></div>
+              </div>
+              
+              {/* Simple Skill Indicators - Hidden on mobile */}
+              <div className="hidden md:block absolute -top-4 -right-4 bg-white dark:bg-zinc-800 rounded-xl p-3 shadow-lg border border-zinc-200 dark:border-zinc-700">
+                <div className="flex items-center gap-2">
+                  <Star size={16} className="text-orange-600 dark:text-orange-400" />
+                  <span className="text-sm font-medium text-zinc-700 dark:text-zinc-300">4+ years</span>
+                </div>
+              </div>
+
+              <div className="hidden md:block absolute -bottom-4 -left-4 bg-white dark:bg-zinc-800 rounded-xl p-3 shadow-lg border border-zinc-200 dark:border-zinc-700">
+                <div className="flex items-center gap-2">
+                  <Zap size={16} className="text-orange-600 dark:text-orange-400" />
+                  <span className="text-sm font-medium text-zinc-700 dark:text-zinc-300">AI SaaS</span>
+                </div>
+              </div>
+
+              <div className="hidden md:block absolute top-1/2 -left-6 transform -translate-y-1/2 bg-white dark:bg-zinc-800 rounded-xl p-3 shadow-lg border border-zinc-200 dark:border-zinc-700">
+                <div className="flex items-center gap-2">
+                  <Check size={16} className="text-orange-600 dark:text-orange-400" />
+                  <span className="text-sm font-medium text-zinc-700 dark:text-zinc-300">Available</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-);
+
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+        <button
+          onClick={scrollToAbout}
+          className="group p-4 rounded-full bg-white dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 border border-zinc-200 dark:border-zinc-700 animate-bounce"
+          aria-label="Scroll down"
+        >
+          <ArrowDown size={20} className="group-hover:translate-y-1 transition-transform duration-300" />
+        </button>
+      </div>
+    </section>
+  );
+};
 
 export default Hero;

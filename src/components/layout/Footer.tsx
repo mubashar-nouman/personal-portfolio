@@ -1,67 +1,58 @@
-import { Github, Instagram, Linkedin, Mail } from 'lucide-react';
+import React from 'react';
+import SocialLinks from '../ui/SocialLinks';
 
-import { Button } from '@/components/ui/button';
+const Footer: React.FC = () => {
+  const currentYear = new Date().getFullYear();
 
-const navLinks = [
-  { name: 'Work', href: '#projects' },
-  { name: 'Services', href: '#services' },
-  { name: 'About', href: '#about' },
-  { name: 'Experience', href: '#experience' },
-  { name: 'Contact', href: '#contact' },
-];
+  return (
+    <footer className="bg-gray-100 dark:bg-dark-800 py-12">
+      <div className="container mx-auto px-4">
+        <div className="flex flex-col md:flex-row justify-between items-center">
+          <div className="mb-8 md:mb-0">
+            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+              Mubashar<span className="text-orange-500">.</span>
+            </h3>
+            <p className="text-gray-600 dark:text-gray-300 max-w-md">
+              Full Stack Software Engineer specializing in building exceptional digital experiences.
+            </p>
+          </div>
 
-const socials = [
-  { icon: Github, label: 'GitHub', href: 'https://github.com/mubashar-nouman' },
-  { icon: Linkedin, label: 'LinkedIn', href: 'https://linkedin.com/in/mubashar-nouman' },
-  { icon: Instagram, label: 'Instagram', href: 'https://instagram.com/mubashar_dev' },
-  { icon: Mail, label: 'Email', href: 'mailto:mubashirrnouman@gmail.com' },
-];
-
-const Footer = () => (
-  <footer className="border-t py-10">
-    <div className="container">
-      <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-        <div>
-          <p className="font-semibold tracking-tight">
-            Mubashar<span className="text-primary">.</span>
-          </p>
-          <p className="mt-1 text-sm text-muted-foreground">
-            Full stack engineer building AI-powered SaaS products.
-          </p>
+          <div className="flex flex-col items-center md:items-end">
+            <SocialLinks className="mb-4" />
+            <p className="text-gray-600 dark:text-gray-300 text-sm">
+              © {currentYear} Mubashar Nouman. All rights reserved.
+            </p>
+          </div>
         </div>
 
-        <nav className="flex flex-wrap gap-x-5 gap-y-2">
-          {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-            >
-              {link.name}
-            </a>
-          ))}
-        </nav>
-
-        <div className="flex gap-1">
-          {socials.map((social) => (
-            <Button key={social.label} asChild variant="ghost" size="icon" aria-label={social.label}>
-              <a
-                href={social.href}
-                target={social.href.startsWith('http') ? '_blank' : undefined}
-                rel={social.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-              >
-                <social.icon />
+        <div className="mt-12 pt-8 border-t border-gray-200 dark:border-dark-600">
+          <div className="flex flex-col md:flex-row md:justify-between items-center">
+            <nav className="flex flex-wrap justify-center md:justify-start gap-x-8 gap-y-4 mb-8 md:mb-0">
+              <a href="#home" className="text-gray-600 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 text-sm">
+                Home
               </a>
-            </Button>
-          ))}
+              <a href="#about" className="text-gray-600 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 text-sm">
+                About
+              </a>
+              <a href="#skills" className="text-gray-600 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 text-sm">
+                Skills
+              </a>
+              <a href="#projects" className="text-gray-600 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 text-sm">
+                Projects
+              </a>
+              <a href="#contact" className="text-gray-600 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 text-sm">
+                Contact
+              </a>
+            </nav>
+
+            <p className="text-gray-500 dark:text-gray-400 text-sm">
+              Designed & Built with ❤️ by Mubashar Nouman
+            </p>
+          </div>
         </div>
       </div>
-
-      <p className="mt-8 border-t pt-6 text-xs text-muted-foreground">
-        © {new Date().getFullYear()} Mubashar Nouman. All rights reserved.
-      </p>
-    </div>
-  </footer>
-);
+    </footer>
+  );
+};
 
 export default Footer;
