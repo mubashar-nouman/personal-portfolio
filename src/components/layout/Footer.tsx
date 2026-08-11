@@ -1,5 +1,5 @@
 import React from 'react';
-import SocialLinks from '../ui/SocialLinks';
+import SocialLinks from '@/components/ui/SocialLinks';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();

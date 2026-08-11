@@ -1,6 +1,6 @@
 import React from 'react';
-import Section from '../ui/Section';
-import { testimonials } from '../../data';
+import Section from '@/components/ui/Section';
+import { testimonials } from '@/data';
 import { Quote } from 'lucide-react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper/modules';

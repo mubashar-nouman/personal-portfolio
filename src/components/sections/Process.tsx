@@ -1,5 +1,5 @@
-import Section from '../ui/Section';
-import { processSteps } from '../../data';
+import Section from '@/components/ui/Section';
+import { processSteps } from '@/data';
 
 const Process = () => {
   if (processSteps.length === 0) return null;

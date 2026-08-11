@@ -1,6 +1,6 @@
 import React from 'react';
-import Section from '../ui/Section';
-import { awards } from '../../data';
+import Section from '@/components/ui/Section';
+import { awards } from '@/data';
 import { Trophy } from 'lucide-react';
 
 const Awards: React.FC = () => {

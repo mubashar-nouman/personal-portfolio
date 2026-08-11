@@ -1,12 +1,16 @@
 import React from 'react';
-import Section from '../ui/Section';
+import Section from '@/components/ui/Section';
 import { Mail, Phone, MapPin, Send, Check, Linkedin } from 'lucide-react';
 import { useForm, ValidationError } from '@formspree/react';
 
-const inputClasses =
-  'w-full px-4 py-2 rounded-md border bg-white dark:bg-zinc-900 border-zinc-300 dark:border-zinc-600 text-zinc-900 dark:text-white placeholder:text-zinc-400 focus:ring-2 focus:ring-orange-500 focus:border-transparent';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
 
-const labelClasses = 'block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-1';
+/** Native <select> keeps Formspree submitting values without extra wiring. */
+const selectClasses =
+  'flex h-10 w-full rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm text-zinc-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 dark:border-zinc-600 dark:bg-zinc-900 dark:text-white';
 
 const Contact: React.FC = () => {
   const [state, handleSubmit] = useForm('mvgogkop');
@@ -132,55 +136,35 @@ const Contact: React.FC = () => {
                 </h3>
                 <form onSubmit={handleSubmit}>
                   <div className="mb-4">
-                    <label htmlFor="name" className={labelClasses}>
+                    <Label htmlFor="name" className="mb-1">
                       Your Name *
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      autoComplete="name"
-                      className={inputClasses}
-                      required
-                    />
+                    </Label>
+                    <Input type="text" id="name" name="name" autoComplete="name" required />
                     <ValidationError prefix="Name" field="name" errors={state.errors} className="mt-1 text-sm text-red-500" />
                   </div>
 
                   <div className="mb-4">
-                    <label htmlFor="email" className={labelClasses}>
+                    <Label htmlFor="email" className="mb-1">
                       Your Email *
-                    </label>
-                    <input
-                      id="email"
-                      type="email"
-                      name="email"
-                      autoComplete="email"
-                      className={inputClasses}
-                      required
-                    />
+                    </Label>
+                    <Input id="email" type="email" name="email" autoComplete="email" required />
                     <ValidationError prefix="Email" field="email" errors={state.errors} className="mt-1 text-sm text-red-500" />
                   </div>
 
                   <div className="mb-4">
-                    <label htmlFor="company" className={labelClasses}>
+                    <Label htmlFor="company" className="mb-1">
                       Company
-                    </label>
-                    <input
-                      type="text"
-                      id="company"
-                      name="company"
-                      autoComplete="organization"
-                      className={inputClasses}
-                    />
+                    </Label>
+                    <Input type="text" id="company" name="company" autoComplete="organization" />
                     <ValidationError prefix="Company" field="company" errors={state.errors} className="mt-1 text-sm text-red-500" />
                   </div>
 
                   <div className="mb-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
                     <div>
-                      <label htmlFor="projectType" className={labelClasses}>
+                      <Label htmlFor="projectType" className="mb-1">
                         Project type
-                      </label>
-                      <select id="projectType" name="projectType" className={inputClasses} defaultValue="">
+                      </Label>
+                      <select id="projectType" name="projectType" className={selectClasses} defaultValue="">
                         <option value="" disabled>
                           Select one
                         </option>
@@ -193,10 +177,10 @@ const Contact: React.FC = () => {
                     </div>
 
                     <div>
-                      <label htmlFor="budget" className={labelClasses}>
+                      <Label htmlFor="budget" className="mb-1">
                         Budget range
-                      </label>
-                      <select id="budget" name="budget" className={inputClasses} defaultValue="">
+                      </Label>
+                      <select id="budget" name="budget" className={selectClasses} defaultValue="">
                         <option value="" disabled>
                           Select one
                         </option>
@@ -210,13 +194,12 @@ const Contact: React.FC = () => {
                   </div>
 
                   <div className="mb-6">
-                    <label htmlFor="message" className={labelClasses}>
+                    <Label htmlFor="message" className="mb-1">
                       What are you building? *
-                    </label>
-                    <textarea
+                    </Label>
+                    <Textarea
                       id="message"
                       name="message"
-                      className={inputClasses}
                       placeholder="A short description of the product, the problem it solves, and any deadline you're working towards."
                       required
                       rows={5}
@@ -224,14 +207,10 @@ const Contact: React.FC = () => {
                     <ValidationError prefix="Message" field="message" errors={state.errors} className="mt-1 text-sm text-red-500" />
                   </div>
 
-                  <button
-                    type="submit"
-                    className="w-full rounded-md flex justify-center py-3 items-center bg-orange-500 hover:bg-orange-600 text-white font-medium transition-colors disabled:opacity-60 disabled:pointer-events-none"
-                    disabled={state.submitting}
-                  >
-                    <Send size={18} className="mr-2" />
-                    {state.submitting ? 'Sending...' : 'Send project details'}
-                  </button>
+                  <Button type="submit" className="w-full" disabled={state.submitting}>
+                    <Send />
+                    {state.submitting ? 'Sending…' : 'Send project details'}
+                  </Button>
 
                   <p className="mt-3 text-center text-xs text-zinc-500 dark:text-zinc-400">
                     I reply within 24 hours. Your details stay private.

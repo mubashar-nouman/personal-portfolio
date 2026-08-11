@@ -1,7 +1,7 @@
 import { ArrowRight, Check, Layout, Server, Smartphone, Sparkles } from 'lucide-react';
-import Section from '../ui/Section';
-import { services } from '../../data';
-import type { Service } from '../../types';
+import Section from '@/components/ui/Section';
+import { services } from '@/data';
+import type { Service } from '@/types';
 
 const iconMap: Record<Service['icon'], typeof Sparkles> = {
   sparkles: Sparkles,
@@ -28,13 +28,13 @@ const Services = () => {
             return (
               <article
                 key={service.id}
-                className="group relative overflow-hidden rounded-xl border border-zinc-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-orange-300 hover:shadow-md dark:border-zinc-700 dark:bg-zinc-800 dark:hover:border-orange-500/50"
+                className="group relative overflow-hidden rounded-xl border border-zinc-200 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-orange-300 hover:shadow-md dark:border-zinc-700 dark:bg-zinc-800 dark:hover:border-orange-500/50"
               >
                 <div className="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-orange-500 to-red-500 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
                 <div className="flex items-center gap-3">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-orange-50 text-orange-600 dark:bg-orange-500/10 dark:text-orange-400">
-                    <Icon size={20} />
+                  <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-orange-50 text-orange-600 dark:bg-orange-500/10 dark:text-orange-400">
+                    <Icon size={18} />
                   </span>
                   <h3 className="font-bold text-zinc-900 dark:text-white">{service.title}</h3>
                 </div>

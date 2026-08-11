@@ -1,6 +1,6 @@
 import React from 'react';
-import Section from '../ui/Section';
-import { certifications } from '../../data';
+import Section from '@/components/ui/Section';
+import { certifications } from '@/data';
 import { Award, ExternalLink } from 'lucide-react';
 
 const Certifications: React.FC = () => {

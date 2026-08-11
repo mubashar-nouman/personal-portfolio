@@ -1,6 +1,6 @@
 import React from 'react';
-import Section from '../ui/Section';
-import { hobbies } from '../../data';
+import Section from '@/components/ui/Section';
+import { hobbies } from '@/data';
 import { Camera, BookOpen, Mountain, Trophy } from 'lucide-react';
 
 const Hobbies: React.FC = () => {

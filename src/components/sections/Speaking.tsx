@@ -1,6 +1,6 @@
 import React from 'react';
-import Section from '../ui/Section';
-import { speakingEvents } from '../../data';
+import Section from '@/components/ui/Section';
+import { speakingEvents } from '@/data';
 import { Mic, Calendar, ArrowRight } from 'lucide-react';
 
 const Speaking: React.FC = () => {

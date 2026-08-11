@@ -1,6 +1,6 @@
 import React from 'react';
-import Section from '../ui/Section';
-import { experiences } from '../../data';
+import Section from '@/components/ui/Section';
+import { experiences } from '@/data';
 import { Briefcase, Building, MapPin } from 'lucide-react';
 
 const Experience: React.FC = () => {

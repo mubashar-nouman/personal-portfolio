@@ -1,7 +1,10 @@
 import { useMemo, useState } from 'react';
 import { Github, ExternalLink, ArrowUpRight, Calendar, Check, Lock, Zap } from 'lucide-react';
-import { projects } from '../../data';
-import type { Project, ProjectCategory } from '../../types';
+import { projects } from '@/data';
+import type { Project, ProjectCategory } from '@/types';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
 
 const filters: { id: 'all' | ProjectCategory; label: string }[] = [
   { id: 'all', label: 'All work' },
@@ -14,32 +17,26 @@ const filters: { id: 'all' | ProjectCategory; label: string }[] = [
 const ProjectLinks = ({ project }: { project: Project }) => (
   <div className="flex flex-wrap gap-2">
     {project.demoLink ? (
-      <a
-        href={project.demoLink}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="inline-flex flex-1 items-center justify-center rounded-lg bg-orange-600 px-3 py-2 text-sm font-medium text-white transition-colors duration-200 hover:bg-orange-700"
-      >
-        <ExternalLink size={14} className="mr-1.5" />
-        Live demo
-      </a>
+      <Button asChild size="sm" className="flex-1">
+        <a href={project.demoLink} target="_blank" rel="noopener noreferrer">
+          <ExternalLink />
+          Live demo
+        </a>
+      </Button>
     ) : (
-      <span className="inline-flex flex-1 items-center justify-center rounded-lg bg-zinc-100 px-3 py-2 text-sm font-medium text-zinc-500 dark:bg-zinc-700 dark:text-zinc-400">
-        <Lock size={14} className="mr-1.5" />
+      <span className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-md bg-zinc-100 px-3 py-2 text-sm font-medium text-zinc-500 dark:bg-zinc-700 dark:text-zinc-400">
+        <Lock size={14} />
         Client project
       </span>
     )}
 
     {project.codeLink && (
-      <a
-        href={project.codeLink}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="inline-flex flex-1 items-center justify-center rounded-lg border border-zinc-300 px-3 py-2 text-sm font-medium text-zinc-700 transition-all duration-200 hover:border-zinc-400 hover:bg-zinc-50 dark:border-zinc-600 dark:text-zinc-300 dark:hover:bg-zinc-700"
-      >
-        <Github size={14} className="mr-1.5" />
-        Code
-      </a>
+      <Button asChild size="sm" variant="outline" className="flex-1">
+        <a href={project.codeLink} target="_blank" rel="noopener noreferrer">
+          <Github />
+          Code
+        </a>
+      </Button>
     )}
   </div>
 );
@@ -75,9 +72,9 @@ const FeaturedProject = ({ project }: { project: Project }) => (
       </div>
 
       <div className="flex flex-col justify-center p-5 lg:p-6">
-        <span className="mb-3 inline-flex w-fit items-center rounded-full bg-orange-50 px-2.5 py-1 text-xs font-semibold uppercase tracking-wider text-orange-700 dark:bg-orange-500/10 dark:text-orange-300">
+        <Badge variant="accent" className="mb-3 w-fit uppercase tracking-wider">
           Featured case study
-        </span>
+        </Badge>
 
         <h3 className="text-lg font-bold text-zinc-900 dark:text-white">{project.title}</h3>
         <p className="mt-1 text-xs font-medium text-orange-600 dark:text-orange-400">{project.tagline}</p>
@@ -95,12 +92,9 @@ const FeaturedProject = ({ project }: { project: Project }) => (
 
         <div className="mt-4 flex flex-wrap gap-1.5">
           {project.tags.map((tag) => (
-            <span
-              key={tag}
-              className="rounded-md bg-zinc-100 px-2 py-1 text-xs font-medium text-zinc-700 dark:bg-zinc-700 dark:text-zinc-300"
-            >
+            <Badge key={tag} variant="secondary">
               {tag}
-            </span>
+            </Badge>
           ))}
         </div>
 
@@ -142,18 +136,11 @@ const ProjectCard = ({ project }: { project: Project }) => (
 
       <div className="mt-4 flex flex-wrap gap-1.5">
         {project.tags.slice(0, 4).map((tag) => (
-          <span
-            key={tag}
-            className="rounded-md bg-zinc-100 px-2 py-1 text-xs font-medium text-zinc-700 dark:bg-zinc-700 dark:text-zinc-300"
-          >
+          <Badge key={tag} variant="secondary">
             {tag}
-          </span>
+          </Badge>
         ))}
-        {project.tags.length > 4 && (
-          <span className="rounded-md bg-zinc-200 px-2 py-1 text-xs font-medium text-zinc-600 dark:bg-zinc-600 dark:text-zinc-300">
-            +{project.tags.length - 4}
-          </span>
-        )}
+        {project.tags.length > 4 && <Badge variant="outline">+{project.tags.length - 4}</Badge>}
       </div>
 
       <div className="mt-5 flex-1" />
@@ -181,37 +168,39 @@ const Projects = () => {
   return (
     <section
       id="projects"
-      className="bg-gradient-to-br from-zinc-50 to-zinc-100 px-4 py-20 dark:from-zinc-900 dark:to-zinc-950"
+      className="bg-gradient-to-br from-zinc-50 to-zinc-100 px-4 py-14 dark:from-zinc-900 dark:to-zinc-950 md:py-20"
     >
       <div className="container mx-auto max-w-7xl">
-        <div className="mb-12 text-center">
-          <div className="mb-4 inline-flex items-center rounded-full bg-orange-100 px-4 py-2 text-sm font-medium text-orange-700 dark:bg-orange-900/30 dark:text-orange-300">
-            <Zap size={16} className="mr-2" />
+        <div className="mb-10 text-center">
+          <div className="mb-3 inline-flex items-center rounded-full bg-orange-100 px-3 py-1 text-xs font-medium text-orange-700 dark:bg-orange-900/30 dark:text-orange-300">
+            <Zap size={14} className="mr-1.5" />
             Selected work
           </div>
-          <h2 className="mb-4 text-3xl font-bold text-zinc-900 dark:text-zinc-100 md:text-4xl">
+          <h2 className="mb-3 text-2xl font-bold text-zinc-900 dark:text-zinc-100 md:text-3xl">
             Products I've shipped
           </h2>
-          <p className="mx-auto max-w-3xl text-lg text-zinc-600 dark:text-zinc-400">
+          <p className="mx-auto max-w-2xl text-base text-zinc-600 dark:text-zinc-400">
             AI-powered SaaS platforms, web applications and mobile apps — taken from first scope through to production.
           </p>
         </div>
 
         <div className="mb-10 flex flex-wrap justify-center gap-2">
           {availableFilters.map((filter) => (
-            <button
+            <Button
               key={filter.id}
               type="button"
+              size="sm"
+              variant="outline"
               onClick={() => setActiveFilter(filter.id)}
               aria-pressed={activeFilter === filter.id}
-              className={`rounded-full border px-5 py-2 text-sm font-medium transition-all duration-300 ${
-                activeFilter === filter.id
-                  ? 'border-orange-300 bg-orange-50 text-orange-800 dark:border-orange-700 dark:bg-orange-900/30 dark:text-orange-200'
-                  : 'border-zinc-200 bg-white/80 text-zinc-600 hover:border-zinc-300 hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-800/80 dark:text-zinc-400 dark:hover:border-zinc-600 dark:hover:bg-zinc-700/50'
-              }`}
+              className={cn(
+                'rounded-full',
+                activeFilter === filter.id &&
+                  'border-orange-300 bg-orange-50 text-orange-800 hover:bg-orange-100 dark:border-orange-700 dark:bg-orange-900/30 dark:text-orange-200'
+              )}
             >
               {filter.label}
-            </button>
+            </Button>
           ))}
         </div>
 
@@ -225,38 +214,32 @@ const Projects = () => {
           </div>
         )}
 
-        <div className="mt-16 text-center">
-          <div className="rounded-2xl border border-zinc-200 bg-white p-8 shadow-lg dark:border-zinc-700 dark:bg-zinc-900">
-            <h3 className="mb-4 text-xl font-bold text-zinc-900 dark:text-zinc-100 md:text-2xl">
+        <div className="mt-12 text-center">
+          <div className="rounded-xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-700 dark:bg-zinc-900">
+            <h3 className="mb-2 text-lg font-bold text-zinc-900 dark:text-zinc-100 md:text-xl">
               Have a project like these in mind?
             </h3>
 
-            <p className="mx-auto mb-8 max-w-xl text-sm text-zinc-600 dark:text-zinc-400">
+            <p className="mx-auto mb-6 max-w-xl text-sm text-zinc-600 dark:text-zinc-400">
               Tell me what you're building and I'll come back with an honest view of scope, timeline and cost — no
               obligation.
             </p>
 
-            <div className="mb-6 flex flex-col justify-center gap-4 sm:flex-row">
-              <a
-                href="#contact"
-                className="inline-flex items-center justify-center rounded-lg bg-orange-600 px-6 py-3 font-medium text-white transition-colors duration-200 hover:bg-orange-700"
-              >
-                Book a free discovery call
-              </a>
-              <a
-                href="https://github.com/mubashar-nouman"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-lg border border-zinc-300 px-6 py-3 font-medium text-zinc-700 transition-colors duration-200 hover:bg-zinc-50 dark:border-zinc-600 dark:text-zinc-300 dark:hover:bg-zinc-800"
-              >
-                <Github size={16} className="mr-2" />
-                View GitHub
-              </a>
+            <div className="mb-5 flex flex-col justify-center gap-2.5 sm:flex-row">
+              <Button asChild>
+                <a href="#contact">Book a free discovery call</a>
+              </Button>
+              <Button asChild variant="outline">
+                <a href="https://github.com/mubashar-nouman" target="_blank" rel="noopener noreferrer">
+                  <Github />
+                  View GitHub
+                </a>
+              </Button>
             </div>
 
-            <div className="inline-flex items-center rounded-full border border-orange-200 bg-orange-50 px-4 py-2 dark:border-orange-800 dark:bg-orange-900/20">
-              <div className="mr-2 h-2 w-2 animate-pulse rounded-full bg-green-500" />
-              <span className="text-sm font-medium text-orange-800 dark:text-orange-200">
+            <div className="inline-flex items-center rounded-full border border-orange-200 bg-orange-50 px-3 py-1.5 dark:border-orange-800 dark:bg-orange-900/20">
+              <div className="mr-2 h-1.5 w-1.5 animate-pulse rounded-full bg-green-500" />
+              <span className="text-xs font-medium text-orange-800 dark:text-orange-200">
                 Currently taking on new client projects
               </span>
             </div>

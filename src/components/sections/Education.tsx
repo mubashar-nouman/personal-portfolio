@@ -1,6 +1,6 @@
 import React from 'react';
-import Section from '../ui/Section';
-import { education } from '../../data';
+import Section from '@/components/ui/Section';
+import { education } from '@/data';
 import { GraduationCap } from 'lucide-react';
 
 const Education: React.FC = () => {

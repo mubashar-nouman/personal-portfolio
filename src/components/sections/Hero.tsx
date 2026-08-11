@@ -1,172 +1,152 @@
 import { ArrowDown, Github, Linkedin, Instagram, Mail, Download, Check, Zap, Star } from 'lucide-react';
 
+import { Button } from '@/components/ui/button';
+
+const CV_URL = 'https://drive.google.com/uc?export=download&id=1CSryFZ4PYKRPNb7xOhs-GnIWgtY2IKwf';
+
+const socials = [
+  { icon: Github, label: 'GitHub', href: 'https://github.com/mubashar-nouman' },
+  { icon: Linkedin, label: 'LinkedIn', href: 'https://linkedin.com/in/mubashar-nouman' },
+  { icon: Instagram, label: 'Instagram', href: 'https://instagram.com/mubashar_dev' },
+];
+
+/**
+ * Same layout and treatment as before — gradient name, floating stat chips,
+ * bordered portrait. Type and controls are a step smaller: the h1 topped out
+ * at 60px and the buttons at 54px, which crowded the fold on a laptop.
+ */
 const Hero = () => {
   const scrollTo = (selector: string) => {
     document.querySelector(selector)?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const scrollToAbout = () => scrollTo('#about');
-  const scrollToContact = () => scrollTo('#contact');
-  const scrollToProjects = () => scrollTo('#projects');
-
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center pt-16 overflow-hidden bg-white dark:bg-zinc-900"
+      className="relative flex min-h-[85vh] items-center overflow-hidden bg-white pt-16 dark:bg-zinc-900"
     >
       {/* Background Elements */}
       <div className="absolute inset-0">
-        {/* Gradient Orbs */}
-        <div className="absolute top-20 left-10 w-48 h-48 md:w-72 md:h-72 bg-orange-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-64 h-64 md:w-96 md:h-96 bg-red-500/10 rounded-full blur-3xl"></div>
-        
-        {/* Grid Pattern */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:30px_30px] md:bg-[size:50px_50px] dark:bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)]"></div>
+        <div className="absolute left-10 top-20 h-48 w-48 rounded-full bg-orange-500/10 blur-3xl md:h-72 md:w-72"></div>
+        <div className="absolute bottom-20 right-10 h-64 w-64 rounded-full bg-red-500/10 blur-3xl md:h-96 md:w-96"></div>
+
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:30px_30px] dark:bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] md:bg-[size:50px_50px]"></div>
       </div>
 
-      <div className="container mx-auto px-4 z-10 py-8 lg:py-0">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+      <div className="container z-10 mx-auto px-4 py-8 lg:py-0">
+        <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
           {/* Left Side - Content */}
-          <div className="space-y-4 md:space-y-6 text-center lg:text-left order-1 lg:order-1">
+          <div className="order-1 space-y-4 text-center lg:order-1 lg:text-left">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gradient-to-r from-orange-100 to-red-100 dark:from-orange-900/30 dark:to-red-900/30 border border-orange-200 dark:border-orange-800">
-              <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></div>
+            <div className="inline-flex items-center gap-2 rounded-full border border-orange-200 bg-gradient-to-r from-orange-100 to-red-100 px-3 py-1 dark:border-orange-800 dark:from-orange-900/30 dark:to-red-900/30">
+              <div className="h-1.5 w-1.5 animate-pulse rounded-full bg-green-500"></div>
               <span className="text-xs font-medium text-orange-800 dark:text-orange-200">
                 Available for new client projects
               </span>
             </div>
 
             {/* Main Heading */}
-            <div className="space-y-2 md:space-y-3">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+            <div className="space-y-1.5">
+              <h1 className="text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">
                 <span className="text-zinc-900 dark:text-zinc-100">Hi, I'm </span>
                 <span className="bg-gradient-to-r from-orange-600 via-red-600 to-orange-600 bg-clip-text text-transparent">
                   Mubashar
                 </span>
               </h1>
-              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-zinc-800 dark:text-zinc-200">
+              <h2 className="text-lg font-bold text-zinc-800 dark:text-zinc-200 sm:text-xl md:text-2xl">
                 Senior Full Stack Engineer
               </h2>
             </div>
 
             {/* Description */}
-            <p className="text-base sm:text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-lg mx-auto lg:mx-0">
-              I build AI-powered SaaS products end to end. 4+ years turning ideas into production software with React,
-              Next.js, Node.js and Python.
+            <p className="mx-auto max-w-lg text-base leading-relaxed text-zinc-600 dark:text-zinc-400 lg:mx-0">
+              I build AI-powered SaaS products end to end. 4+ years turning ideas into production software with
+              React, Next.js, Node.js and Python.
             </p>
 
             {/* Trust markers */}
-            <ul className="flex flex-wrap gap-x-4 gap-y-1.5 justify-center lg:justify-start text-sm text-zinc-600 dark:text-zinc-400">
+            <ul className="flex flex-wrap justify-center gap-x-4 gap-y-1.5 text-sm text-zinc-600 dark:text-zinc-400 lg:justify-start">
               {['AI & LLM integrations', 'Web, mobile & API'].map((item) => (
                 <li key={item} className="flex items-center gap-1.5">
-                  <Check size={15} className="text-orange-500 flex-shrink-0" />
+                  <Check size={14} className="flex-shrink-0 text-orange-500" />
                   {item}
                 </li>
               ))}
             </ul>
 
             {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
-              <button
-                onClick={scrollToContact}
-                className="group inline-flex items-center justify-center px-6 py-3 rounded-lg bg-gradient-to-r from-orange-600 to-red-600 text-white font-medium hover:from-orange-700 hover:to-red-700 transition-all duration-300 shadow-lg hover:shadow-xl"
-              >
-                <Mail size={18} className="mr-2 group-hover:rotate-12 transition-transform duration-300" />
+            <div className="flex flex-col justify-center gap-2.5 sm:flex-row lg:justify-start">
+              <Button size="lg" onClick={() => scrollTo('#contact')}>
+                <Mail />
                 Hire me
-              </button>
-              <button
-                onClick={scrollToProjects}
-                className="group inline-flex items-center justify-center px-6 py-3 rounded-lg border-2 border-zinc-300 dark:border-zinc-600 text-zinc-700 dark:text-zinc-300 font-medium hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:border-orange-400 dark:hover:border-orange-500 transition-all duration-300"
-              >
+              </Button>
+              <Button variant="outline" size="lg" onClick={() => scrollTo('#projects')}>
                 View my work
-              </button>
-              <a
-                href="https://drive.google.com/uc?export=download&id=1CSryFZ4PYKRPNb7xOhs-GnIWgtY2IKwf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center justify-center px-6 py-3 rounded-lg text-zinc-600 dark:text-zinc-400 font-medium hover:text-orange-600 dark:hover:text-orange-400 transition-all duration-300"
-              >
-                <Download size={18} className="mr-2" />
-                CV
-              </a>
+              </Button>
+              <Button asChild variant="ghost" size="lg">
+                <a href={CV_URL} target="_blank" rel="noopener noreferrer">
+                  <Download />
+                  CV
+                </a>
+              </Button>
             </div>
 
             {/* Social Links */}
-            <div className="flex items-center gap-4 justify-center lg:justify-start">
-              <span className="text-xs text-zinc-500 dark:text-zinc-400 font-medium">Connect with me:</span>
-              <div className="flex gap-2">
-                <a
-                  href="https://github.com/mubashar-nouman"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group p-2.5 rounded-lg bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400 hover:text-orange-600 dark:hover:text-orange-400 hover:border-orange-300 dark:hover:border-orange-600 hover:bg-orange-50 dark:hover:bg-orange-900/20 transition-all duration-300 hover:scale-110"
-                >
-                  <Github size={18} className="group-hover:rotate-12 transition-transform duration-300" />
-                </a>
-                <a
-                  href="https://linkedin.com/in/mubashar-nouman"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group p-2.5 rounded-lg bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400 hover:text-orange-600 dark:hover:text-orange-400 hover:border-orange-300 dark:hover:border-orange-600 hover:bg-orange-50 dark:hover:bg-orange-900/20 transition-all duration-300 hover:scale-110"
-                >
-                  <Linkedin size={18} className="group-hover:rotate-12 transition-transform duration-300" />
-                </a>
-                <a
-                  href="https://instagram.com/mubashar_dev"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group p-2.5 rounded-lg bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400 hover:text-orange-600 dark:hover:text-orange-400 hover:border-orange-300 dark:hover:border-orange-600 hover:bg-orange-50 dark:hover:bg-orange-900/20 transition-all duration-300 hover:scale-110"
-                >
-                  <Instagram size={18} className="group-hover:rotate-12 transition-transform duration-300" />
-                </a>
+            <div className="flex items-center justify-center gap-3 lg:justify-start">
+              <span className="text-xs font-medium text-zinc-500 dark:text-zinc-400">Connect with me:</span>
+              <div className="flex gap-1.5">
+                {socials.map((social) => (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={social.label}
+                    className="rounded-lg border border-zinc-200 bg-zinc-100 p-2 text-zinc-600 transition-all duration-300 hover:border-orange-300 hover:bg-orange-50 hover:text-orange-600 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-400 dark:hover:border-orange-600 dark:hover:bg-orange-900/20 dark:hover:text-orange-400"
+                  >
+                    <social.icon size={16} />
+                  </a>
+                ))}
               </div>
             </div>
           </div>
 
-          {/* Right Side - Clean Professional Image */}
-          <div className="flex justify-center lg:justify-end order-2 lg:order-2 lg:pr-8">
-            <div className="relative w-64 sm:w-80">
-              {/* Subtle Background Glow */}
-              <div className="absolute inset-0 w-64 h-64 sm:w-80 sm:h-80 bg-gradient-to-br from-orange-500/8 to-red-500/8 rounded-full blur-2xl"></div>
-              
-              {/* Main Image Container */}
-              <div className="relative w-64 h-64 sm:w-80 sm:h-80">
-                {/* Clean Border Frame */}
+          {/* Right Side - Portrait */}
+          <div className="order-2 flex justify-center lg:order-2 lg:justify-end lg:pr-6">
+            <div className="relative w-56 sm:w-64">
+              <div className="absolute inset-0 h-56 w-56 rounded-full bg-gradient-to-br from-orange-500/8 to-red-500/8 blur-2xl sm:h-64 sm:w-64"></div>
+
+              <div className="relative h-56 w-56 sm:h-64 sm:w-64">
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-orange-500 to-red-500 p-0.5">
-                  <div className="w-full h-full rounded-2xl bg-white dark:bg-zinc-900 flex items-center justify-center">
-                    <div className="w-full h-full rounded-2xl overflow-hidden">
-                      <img
-                        src="/mine.jpg"
-                        alt="Mubashar Nouman"
-                        className="w-full h-full object-cover"
-                      />
+                  <div className="flex h-full w-full items-center justify-center rounded-2xl bg-white dark:bg-zinc-900">
+                    <div className="h-full w-full overflow-hidden rounded-2xl">
+                      <img src="/mine.jpg" alt="Mubashar Nouman" className="h-full w-full object-cover" />
                     </div>
                   </div>
                 </div>
-                
-                {/* Clean Shadow */}
+
                 <div className="absolute inset-0 rounded-2xl shadow-xl"></div>
               </div>
-              
-              {/* Simple Skill Indicators - Hidden on mobile */}
-              <div className="hidden md:block absolute -top-4 -right-4 bg-white dark:bg-zinc-800 rounded-xl p-3 shadow-lg border border-zinc-200 dark:border-zinc-700">
-                <div className="flex items-center gap-2">
-                  <Star size={16} className="text-orange-600 dark:text-orange-400" />
-                  <span className="text-sm font-medium text-zinc-700 dark:text-zinc-300">4+ years</span>
+
+              {/* Floating stat chips */}
+              <div className="absolute -right-3 -top-3 hidden rounded-lg border border-zinc-200 bg-white p-2 shadow-md dark:border-zinc-700 dark:bg-zinc-800 md:block">
+                <div className="flex items-center gap-1.5">
+                  <Star size={14} className="text-orange-600 dark:text-orange-400" />
+                  <span className="text-xs font-medium text-zinc-700 dark:text-zinc-300">4+ years</span>
                 </div>
               </div>
 
-              <div className="hidden md:block absolute -bottom-4 -left-4 bg-white dark:bg-zinc-800 rounded-xl p-3 shadow-lg border border-zinc-200 dark:border-zinc-700">
-                <div className="flex items-center gap-2">
-                  <Zap size={16} className="text-orange-600 dark:text-orange-400" />
-                  <span className="text-sm font-medium text-zinc-700 dark:text-zinc-300">AI SaaS</span>
+              <div className="absolute -bottom-3 -left-3 hidden rounded-lg border border-zinc-200 bg-white p-2 shadow-md dark:border-zinc-700 dark:bg-zinc-800 md:block">
+                <div className="flex items-center gap-1.5">
+                  <Zap size={14} className="text-orange-600 dark:text-orange-400" />
+                  <span className="text-xs font-medium text-zinc-700 dark:text-zinc-300">AI SaaS</span>
                 </div>
               </div>
 
-              <div className="hidden md:block absolute top-1/2 -left-6 transform -translate-y-1/2 bg-white dark:bg-zinc-800 rounded-xl p-3 shadow-lg border border-zinc-200 dark:border-zinc-700">
-                <div className="flex items-center gap-2">
-                  <Check size={16} className="text-orange-600 dark:text-orange-400" />
-                  <span className="text-sm font-medium text-zinc-700 dark:text-zinc-300">Available</span>
+              <div className="absolute -left-5 top-1/2 hidden -translate-y-1/2 rounded-lg border border-zinc-200 bg-white p-2 shadow-md dark:border-zinc-700 dark:bg-zinc-800 md:block">
+                <div className="flex items-center gap-1.5">
+                  <Check size={14} className="text-orange-600 dark:text-orange-400" />
+                  <span className="text-xs font-medium text-zinc-700 dark:text-zinc-300">Available</span>
                 </div>
               </div>
             </div>
@@ -175,13 +155,13 @@ const Hero = () => {
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2">
         <button
-          onClick={scrollToAbout}
-          className="group p-4 rounded-full bg-white dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 border border-zinc-200 dark:border-zinc-700 animate-bounce"
+          onClick={() => scrollTo('#about')}
+          className="group animate-bounce rounded-full border border-zinc-200 bg-white p-3 text-zinc-800 shadow-md transition-all duration-300 hover:shadow-lg dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-200"
           aria-label="Scroll down"
         >
-          <ArrowDown size={20} className="group-hover:translate-y-1 transition-transform duration-300" />
+          <ArrowDown size={16} />
         </button>
       </div>
     </section>
