@@ -154,12 +154,13 @@ export const projects: Project[] = [
     description:
       "A document assistant that answers questions grounded in files you upload. The source document opens beside the chat, so you can read the original and interrogate it at the same time instead of trusting the answer blind.",
     highlights: [
-      "Drag-and-drop upload supporting TXT, MD, CSV, JSON, LOG and PDF files",
+      "RAG pipeline that chunks and embeds uploads, then retrieves only the passages needed to answer",
+      "Answers cited back to their source document instead of returned unattributed",
+      "Document ingestion for TXT, MD, CSV, JSON, LOG and PDF, with text extracted per page",
       "Split-pane workspace pairing the source document with the assistant",
-      "In-document search to jump straight to the passage behind an answer",
       "Multi-chat sessions so separate lines of questioning stay isolated",
     ],
-    tags: ["Next.js", "TypeScript", "OpenAI API", "Tailwind CSS"],
+    tags: ["Python", "FastAPI", "RAG", "Gemini API", "Vector DB"],
     image: "/projects/support-desk-ai.png",
     year: "2025",
     category: "AI",
