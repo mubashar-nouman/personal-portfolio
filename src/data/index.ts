@@ -93,6 +93,25 @@ export const processSteps: ProcessStep[] = [
 
 export const projects: Project[] = [
   {
+    id: 7,
+    title: "ZygenAI",
+    tagline: "AI support agents for marketplace sellers",
+    description:
+      "A customer support platform that answers buyer messages automatically using live order data. It reads each message, pulls real tracking and delivery details, and replies in the seller's own voice in under 30 seconds — grounded in verified order records rather than guesswork.",
+    highlights: [
+      "Context-aware replies backed by live tracking, carrier and delivery data",
+      "Escalation rules that route disputes and refunds to a human instead of answering",
+      "Configurable reply tone and full conversation memory across a thread",
+      "eBay marketplace integration over OAuth with orders syncing every two minutes",
+      "Subscription billing and per-store analytics with spreadsheet export",
+    ],
+    tags: ["Next.js", "TypeScript", "Node.js", "PostgreSQL", "OpenAI API", "Stripe"],
+    image: "/projects/zygenai.jpg",
+    year: "2025",
+    category: "SaaS",
+    demoLink: "https://zygenai.com/",
+  },
+  {
     id: 1,
     title: "SkillPet",
     tagline: "Gamified AI learning platform with subscriptions",
