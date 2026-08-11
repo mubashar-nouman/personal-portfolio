@@ -1,50 +1,52 @@
-import React, { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Menu, X } from 'lucide-react';
-import ThemeToggle from './ThemeToggle';
 
-const Header: React.FC = () => {
+import ThemeToggle from './ThemeToggle';
+import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
+
+const navItems = [
+  { name: 'Services', href: '#services' },
+  { name: 'Work', href: '#projects' },
+  { name: 'About', href: '#about' },
+  { name: 'Process', href: '#process' },
+  { name: 'Experience', href: '#experience' },
+];
+
+/**
+ * Nav links and actions sit at 14px (text-sm), the shadcn navigation scale.
+ * They were 16px before, which made the bar read heavier than the page.
+ */
+const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  const navItems = [
-    { name: 'Services', href: '#services' },
-    { name: 'Work', href: '#projects' },
-    { name: 'About', href: '#about' },
-    { name: 'Process', href: '#process' },
-    { name: 'Experience', href: '#experience' },
-  ];
-
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-
-    window.addEventListener('scroll', handleScroll);
+    const handleScroll = () => setIsScrolled(window.scrollY > 10);
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const scrollToSection = (href: string) => {
     setIsMenuOpen(false);
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <header 
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-white/90 dark:bg-dark-800/90 backdrop-blur-sm shadow-sm' 
+    <header
+      className={cn(
+        'fixed top-0 z-50 w-full transition-all duration-300',
+        isScrolled
+          ? 'border-b border-zinc-200 bg-white/90 backdrop-blur-sm dark:border-zinc-800 dark:bg-zinc-900/90'
           : 'bg-transparent'
-      }`}
+      )}
     >
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between py-4">
-          {/* Logo */}
-          <a 
-            href="#home" 
-            className="text-xl font-bold text-gray-900 dark:text-white"
+        <div className="flex h-14 items-center justify-between">
+          <a
+            href="#home"
+            className="text-base font-bold text-zinc-900 dark:text-white"
             onClick={(e) => {
               e.preventDefault();
               scrollToSection('#home');
@@ -53,58 +55,18 @@ const Header: React.FC = () => {
             Mubashar<span className="text-orange-500">.</span>
           </a>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-6 lg:space-x-8">
+          {/* Desktop navigation */}
+          <nav className="hidden items-center gap-1 md:flex">
             {navItems.map((item) => (
-              <a
+              <Button
                 key={item.name}
-                href={item.href}
-                className="text-gray-700 dark:text-gray-200 hover:text-orange-500 dark:hover:text-orange-400 font-medium transition-colors duration-200"
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection(item.href);
-                }}
+                asChild
+                variant="ghost"
+                size="sm"
+                className="text-zinc-700 hover:bg-transparent hover:text-orange-600 dark:text-zinc-200 dark:hover:bg-transparent dark:hover:text-orange-400"
               >
-                {item.name}
-              </a>
-            ))}
-            <a
-              href="#contact"
-              className="rounded-lg bg-orange-600 px-4 py-2 font-medium text-white transition-colors duration-200 hover:bg-orange-700"
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToSection('#contact');
-              }}
-            >
-              Hire me
-            </a>
-            <ThemeToggle />
-          </nav>
-
-          {/* Mobile Navigation Toggle */}
-          <div className="flex items-center gap-4 md:hidden">
-            <ThemeToggle />
-            <button
-              className="text-gray-700 dark:text-gray-200 hover:text-orange-500 dark:hover:text-orange-400"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label="Toggle mobile menu"
-            >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile Menu */}
-      {isMenuOpen && (
-        <div className="md:hidden bg-white dark:bg-dark-800 shadow-md">
-          <div className="container mx-auto px-4 py-4">
-            <nav className="flex flex-col space-y-4">
-              {navItems.map((item) => (
                 <a
-                  key={item.name}
                   href={item.href}
-                  className="text-gray-700 dark:text-gray-200 hover:text-orange-500 dark:hover:text-orange-400 font-medium transition-colors duration-200 py-2"
                   onClick={(e) => {
                     e.preventDefault();
                     scrollToSection(item.href);
@@ -112,10 +74,61 @@ const Header: React.FC = () => {
                 >
                   {item.name}
                 </a>
-              ))}
+              </Button>
+            ))}
+
+            <div className="ml-2 flex items-center gap-2">
+              <ThemeToggle />
+              <Button asChild size="sm">
+                <a
+                  href="#contact"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection('#contact');
+                  }}
+                >
+                  Hire me
+                </a>
+              </Button>
+            </div>
+          </nav>
+
+          {/* Mobile navigation toggle */}
+          <div className="flex items-center gap-1 md:hidden">
+            <ThemeToggle />
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setIsMenuOpen((open) => !open)}
+              aria-label="Toggle mobile menu"
+              aria-expanded={isMenuOpen}
+            >
+              {isMenuOpen ? <X /> : <Menu />}
+            </Button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile menu */}
+      {isMenuOpen && (
+        <div className="border-b border-zinc-200 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-900 md:hidden">
+          <nav className="container mx-auto flex flex-col px-4 py-3">
+            {navItems.map((item) => (
+              <a
+                key={item.name}
+                href={item.href}
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection(item.href);
+                }}
+                className="rounded-md px-1 py-2.5 text-sm font-medium text-zinc-700 transition-colors hover:text-orange-600 dark:text-zinc-200 dark:hover:text-orange-400"
+              >
+                {item.name}
+              </a>
+            ))}
+            <Button asChild size="sm" className="mt-3">
               <a
                 href="#contact"
-                className="rounded-lg bg-orange-600 px-4 py-3 text-center font-medium text-white transition-colors duration-200 hover:bg-orange-700"
                 onClick={(e) => {
                   e.preventDefault();
                   scrollToSection('#contact');
@@ -123,8 +136,8 @@ const Header: React.FC = () => {
               >
                 Hire me
               </a>
-            </nav>
-          </div>
+            </Button>
+          </nav>
         </div>
       )}
     </header>
