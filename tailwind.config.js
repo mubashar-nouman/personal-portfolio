@@ -74,6 +74,10 @@ export default {
         sm: 'calc(var(--radius) - 4px)',
       },
       keyframes: {
+        'fade-up': {
+          from: { opacity: '0', transform: 'translateY(10px)' },
+          to: { opacity: '1', transform: 'translateY(0)' },
+        },
         'card-hover': {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-5px)' },
@@ -84,6 +88,7 @@ export default {
         },
       },
       animation: {
+        'fade-up': 'fade-up 0.55s ease-out both',
         'card-hover': 'card-hover 0.3s ease-in-out',
         'pulse-slow': 'pulse-slow 3s ease-in-out infinite',
       },

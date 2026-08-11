@@ -1,6 +1,7 @@
-import { ArrowDown, Github, Linkedin, Instagram, Mail, Download, Check, Zap, Star } from 'lucide-react';
+import { ArrowRight, Download, Github, Instagram, Linkedin, Mail } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
+import { projects } from '@/data';
 
 const CV_URL = 'https://drive.google.com/uc?export=download&id=1CSryFZ4PYKRPNb7xOhs-GnIWgtY2IKwf';
 
@@ -10,78 +11,69 @@ const socials = [
   { icon: Instagram, label: 'Instagram', href: 'https://instagram.com/mubashar_dev' },
 ];
 
+const stats = [
+  { value: '4+', label: 'Years shipping' },
+  { value: '6', label: 'Products live' },
+  { value: '24h', label: 'Reply time' },
+];
+
 /**
- * Same layout and treatment as before — gradient name, floating stat chips,
- * bordered portrait. Type and controls are a step smaller: the h1 topped out
- * at 60px and the buttons at 54px, which crowded the fold on a laptop.
+ * The portrait is a knockout on flat yellow, so it is seated in a warm panel
+ * that repeats that yellow deliberately — the colour then reads as a designed
+ * block rather than a stray photo background.
  */
 const Hero = () => {
   const scrollTo = (selector: string) => {
     document.querySelector(selector)?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  // Named proof under the fold: shipped products a visitor can go and look at.
+  const shipped = projects.filter((project) => project.demoLink).slice(0, 4);
+
   return (
     <section
       id="home"
-      className="relative flex min-h-[85vh] items-center overflow-hidden bg-white pt-16 dark:bg-zinc-900"
+      className="relative overflow-hidden border-b border-zinc-200 bg-white pt-24 dark:border-zinc-800 dark:bg-zinc-950 md:pt-28"
     >
-      {/* Background Elements */}
-      <div className="absolute inset-0">
-        <div className="absolute left-10 top-20 h-48 w-48 rounded-full bg-orange-500/10 blur-3xl md:h-72 md:w-72"></div>
-        <div className="absolute bottom-20 right-10 h-64 w-64 rounded-full bg-red-500/10 blur-3xl md:h-96 md:w-96"></div>
-
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:30px_30px] dark:bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] md:bg-[size:50px_50px]"></div>
+      {/* Warm wash behind the portrait side, anchoring the yellow. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0"
+      >
+        <div className="absolute -right-24 top-0 h-[28rem] w-[28rem] rounded-full bg-amber-400/20 blur-3xl dark:bg-amber-500/10" />
+        <div className="absolute -left-20 bottom-0 h-80 w-80 rounded-full bg-orange-500/10 blur-3xl dark:bg-orange-500/10" />
       </div>
 
-      <div className="container z-10 mx-auto px-4 py-8 lg:py-0">
-        <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
-          {/* Left Side - Content */}
-          <div className="order-1 space-y-4 text-center lg:order-1 lg:text-left">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 rounded-full border border-orange-200 bg-gradient-to-r from-orange-100 to-red-100 px-3 py-1 dark:border-orange-800 dark:from-orange-900/30 dark:to-red-900/30">
-              <div className="h-1.5 w-1.5 animate-pulse rounded-full bg-green-500"></div>
-              <span className="text-xs font-medium text-orange-800 dark:text-orange-200">
-                Available for new client projects
+      <div className="container relative z-10 mx-auto px-4 pb-14 md:pb-20">
+        <div className="grid items-center gap-10 lg:grid-cols-[1.15fr_1fr] lg:gap-16">
+          {/* Copy */}
+          <div className="order-2 animate-fade-up text-center lg:order-1 lg:text-left">
+            <p className="inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white/70 px-3 py-1 text-xs font-medium text-zinc-600 backdrop-blur dark:border-zinc-700 dark:bg-zinc-900/70 dark:text-zinc-300">
+              <span className="relative flex h-1.5 w-1.5">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-70" />
+                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500" />
               </span>
-            </div>
-
-            {/* Main Heading */}
-            <div className="space-y-1.5">
-              <h1 className="text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">
-                <span className="text-zinc-900 dark:text-zinc-100">Hi, I'm </span>
-                <span className="bg-gradient-to-r from-orange-600 via-red-600 to-orange-600 bg-clip-text text-transparent">
-                  Mubashar
-                </span>
-              </h1>
-              <h2 className="text-lg font-bold text-zinc-800 dark:text-zinc-200 sm:text-xl md:text-2xl">
-                Senior Full Stack Engineer
-              </h2>
-            </div>
-
-            {/* Description */}
-            <p className="mx-auto max-w-lg text-base leading-relaxed text-zinc-600 dark:text-zinc-400 lg:mx-0">
-              I build AI-powered SaaS products end to end. 4+ years turning ideas into production software with
-              React, Next.js, Node.js and Python.
+              Available for new client projects
             </p>
 
-            {/* Trust markers */}
-            <ul className="flex flex-wrap justify-center gap-x-4 gap-y-1.5 text-sm text-zinc-600 dark:text-zinc-400 lg:justify-start">
-              {['AI & LLM integrations', 'Web, mobile & API'].map((item) => (
-                <li key={item} className="flex items-center gap-1.5">
-                  <Check size={14} className="flex-shrink-0 text-orange-500" />
-                  {item}
-                </li>
-              ))}
-            </ul>
+            <h1 className="mt-5 text-4xl font-bold leading-[1.1] tracking-tight text-zinc-900 dark:text-white sm:text-5xl lg:text-[3.4rem]">
+              I build AI products
+              <span className="block text-orange-600 dark:text-orange-500">that actually ship.</span>
+            </h1>
 
-            {/* Action Buttons */}
-            <div className="flex flex-col justify-center gap-2.5 sm:flex-row lg:justify-start">
+            <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-zinc-600 dark:text-zinc-400 lg:mx-0 lg:text-lg">
+              I'm Mubashar — a full stack engineer who takes AI-powered SaaS from first scope to production. React,
+              Next.js, Node.js and Python, with the billing, auth and infrastructure that turn a demo into a business.
+            </p>
+
+            <div className="mt-8 flex flex-col justify-center gap-2.5 sm:flex-row lg:justify-start">
               <Button size="lg" onClick={() => scrollTo('#contact')}>
                 <Mail />
-                Hire me
+                Start a project
               </Button>
               <Button variant="outline" size="lg" onClick={() => scrollTo('#projects')}>
                 View my work
+                <ArrowRight />
               </Button>
               <Button asChild variant="ghost" size="lg">
                 <a href={CV_URL} target="_blank" rel="noopener noreferrer">
@@ -91,78 +83,79 @@ const Hero = () => {
               </Button>
             </div>
 
-            {/* Social Links */}
-            <div className="flex items-center justify-center gap-3 lg:justify-start">
-              <span className="text-xs font-medium text-zinc-500 dark:text-zinc-400">Connect with me:</span>
+            {/* Stats + socials */}
+            <div className="mt-9 flex flex-col items-center gap-6 sm:flex-row sm:items-center lg:justify-start">
+              <dl className="flex gap-7">
+                {stats.map((stat) => (
+                  <div key={stat.label}>
+                    <dt className="sr-only">{stat.label}</dt>
+                    <dd>
+                      <span className="block text-xl font-bold text-zinc-900 dark:text-white">{stat.value}</span>
+                      <span className="text-xs text-zinc-500 dark:text-zinc-400">{stat.label}</span>
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+
+              <div className="hidden h-9 w-px bg-zinc-200 dark:bg-zinc-800 sm:block" />
+
               <div className="flex gap-1.5">
                 {socials.map((social) => (
-                  <a
-                    key={social.label}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={social.label}
-                    className="rounded-lg border border-zinc-200 bg-zinc-100 p-2 text-zinc-600 transition-all duration-300 hover:border-orange-300 hover:bg-orange-50 hover:text-orange-600 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-400 dark:hover:border-orange-600 dark:hover:bg-orange-900/20 dark:hover:text-orange-400"
-                  >
-                    <social.icon size={16} />
-                  </a>
+                  <Button key={social.label} asChild variant="ghost" size="icon" aria-label={social.label}>
+                    <a href={social.href} target="_blank" rel="noopener noreferrer">
+                      <social.icon />
+                    </a>
+                  </Button>
                 ))}
               </div>
             </div>
           </div>
 
-          {/* Right Side - Portrait */}
-          <div className="order-2 flex justify-center lg:order-2 lg:justify-end lg:pr-6">
-            <div className="relative w-56 sm:w-64">
-              <div className="absolute inset-0 h-56 w-56 rounded-full bg-gradient-to-br from-orange-500/8 to-red-500/8 blur-2xl sm:h-64 sm:w-64"></div>
-
-              <div className="relative h-56 w-56 sm:h-64 sm:w-64">
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-orange-500 to-red-500 p-0.5">
-                  <div className="flex h-full w-full items-center justify-center rounded-2xl bg-white dark:bg-zinc-900">
-                    <div className="h-full w-full overflow-hidden rounded-2xl">
-                      <img src="/mine.jpg" alt="Mubashar Nouman" className="h-full w-full object-cover" />
-                    </div>
-                  </div>
-                </div>
-
-                <div className="absolute inset-0 rounded-2xl shadow-xl"></div>
+          {/* Portrait panel */}
+          <div className="order-1 animate-fade-up [animation-delay:120ms] lg:order-2">
+            <div className="relative mx-auto w-full max-w-[15rem] sm:max-w-xs lg:max-w-sm">
+              <div className="relative overflow-hidden rounded-[1.75rem] bg-amber-400 shadow-xl ring-1 ring-black/5 dark:bg-amber-500">
+                <img
+                  src="/mine.jpg"
+                  alt="Mubashar Nouman"
+                  width={640}
+                  height={640}
+                  className="block w-full object-cover"
+                />
               </div>
 
-              {/* Floating stat chips */}
-              <div className="absolute -right-3 -top-3 hidden rounded-lg border border-zinc-200 bg-white p-2 shadow-md dark:border-zinc-700 dark:bg-zinc-800 md:block">
-                <div className="flex items-center gap-1.5">
-                  <Star size={14} className="text-orange-600 dark:text-orange-400" />
-                  <span className="text-xs font-medium text-zinc-700 dark:text-zinc-300">4+ years</span>
-                </div>
-              </div>
-
-              <div className="absolute -bottom-3 -left-3 hidden rounded-lg border border-zinc-200 bg-white p-2 shadow-md dark:border-zinc-700 dark:bg-zinc-800 md:block">
-                <div className="flex items-center gap-1.5">
-                  <Zap size={14} className="text-orange-600 dark:text-orange-400" />
-                  <span className="text-xs font-medium text-zinc-700 dark:text-zinc-300">AI SaaS</span>
-                </div>
-              </div>
-
-              <div className="absolute -left-5 top-1/2 hidden -translate-y-1/2 rounded-lg border border-zinc-200 bg-white p-2 shadow-md dark:border-zinc-700 dark:bg-zinc-800 md:block">
-                <div className="flex items-center gap-1.5">
-                  <Check size={14} className="text-orange-600 dark:text-orange-400" />
-                  <span className="text-xs font-medium text-zinc-700 dark:text-zinc-300">Available</span>
-                </div>
+              <div className="absolute -bottom-5 left-1/2 w-max -translate-x-1/2 rounded-xl border border-zinc-200 bg-white px-4 py-2.5 shadow-lg dark:border-zinc-700 dark:bg-zinc-900 lg:left-auto lg:right-4 lg:translate-x-0">
+                <p className="text-xs font-semibold text-zinc-900 dark:text-white">Senior Full Stack Engineer</p>
+                <p className="mt-0.5 text-[11px] text-zinc-500 dark:text-zinc-400">Lahore · US &amp; EU hours</p>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2">
-        <button
-          onClick={() => scrollTo('#about')}
-          className="group animate-bounce rounded-full border border-zinc-200 bg-white p-3 text-zinc-800 shadow-md transition-all duration-300 hover:shadow-lg dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-200"
-          aria-label="Scroll down"
-        >
-          <ArrowDown size={16} />
-        </button>
+        {/* Shipped products */}
+        {shipped.length > 0 && (
+          <div className="mt-14 border-t border-zinc-200 pt-6 dark:border-zinc-800">
+            <div className="flex flex-col items-center gap-x-8 gap-y-3 sm:flex-row sm:flex-wrap">
+              <p className="text-xs font-medium uppercase tracking-[0.14em] text-zinc-400 dark:text-zinc-500">
+                Shipped &amp; live
+              </p>
+              <ul className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+                {shipped.map((project) => (
+                  <li key={project.id}>
+                    <a
+                      href={project.demoLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm font-semibold text-zinc-500 underline-offset-4 transition-colors hover:text-orange-600 hover:underline dark:text-zinc-400 dark:hover:text-orange-500"
+                    >
+                      {project.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
