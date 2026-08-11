@@ -72,7 +72,7 @@ const FeaturedProject = ({ project }: { project: Project }) => (
       </div>
 
       <div className="flex flex-col justify-center p-5 lg:p-6">
-        <Badge variant="accent" className="mb-3 w-fit uppercase tracking-wider">
+        <Badge className="mb-3 w-fit uppercase tracking-wider">
           Featured case study
         </Badge>
 
