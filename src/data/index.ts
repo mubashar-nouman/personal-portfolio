@@ -129,6 +129,24 @@ export const projects: Project[] = [
     codeLink: "https://github.com/mubashar-nouman/mxbot-frontend",
   },
   {
+    id: 6,
+    title: "Support Desk AI",
+    tagline: "Ask questions about your own documents",
+    description:
+      "A document assistant that answers questions grounded in files you upload. The source document opens beside the chat, so you can read the original and interrogate it at the same time instead of trusting the answer blind.",
+    highlights: [
+      "Drag-and-drop upload supporting TXT, MD, CSV, JSON, LOG and PDF files",
+      "Split-pane workspace pairing the source document with the assistant",
+      "In-document search to jump straight to the passage behind an answer",
+      "Multi-chat sessions so separate lines of questioning stay isolated",
+    ],
+    tags: ["Next.js", "TypeScript", "OpenAI API", "Tailwind CSS"],
+    image: "/projects/support-desk-ai.png",
+    year: "2025",
+    category: "AI",
+    demoLink: "https://support-desk-ai-eight.vercel.app/",
+  },
+  {
     id: 3,
     title: "AI Content Generator",
     tagline: "Marketing copy on demand",
