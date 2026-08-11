@@ -10,6 +10,17 @@
  * site's existing zinc/orange palette here, which keeps the components stock
  * while the design stays unchanged.
  */
+/**
+ * The token-driven variants (outline, ghost, link) inherit their text colour
+ * rather than setting one, so the document needs a foreground colour for them
+ * to be legible. Without this they fall back to black in dark mode.
+ */
+@layer base {
+  body {
+    @apply text-foreground;
+  }
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
