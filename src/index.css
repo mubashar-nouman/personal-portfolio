@@ -1,3 +1,101 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/**
+ * Warm-neutral palette with a single amber accent.
+ *
+ * The previous design spent orange on badges, underlines, icons, bullets and
+ * gradients, so it stopped signalling anything. Here the accent is reserved for
+ * one primary action per screen plus links, and everything else is neutral.
+ */
+@layer base {
+  :root {
+    --background: 40 30% 99%;
+    --foreground: 24 10% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 24 10% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 24 10% 10%;
+
+    --primary: 24 95% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 30 12% 96%;
+    --secondary-foreground: 24 10% 20%;
+
+    --muted: 30 12% 96%;
+    --muted-foreground: 25 6% 45%;
+
+    --accent: 30 12% 95%;
+    --accent-foreground: 24 10% 20%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 28 12% 90%;
+    --input: 28 12% 88%;
+    --ring: 24 95% 45%;
+
+    --radius: 0.625rem;
+  }
+
+  .dark {
+    --background: 24 10% 7%;
+    --foreground: 30 15% 94%;
+
+    --card: 24 8% 10%;
+    --card-foreground: 30 15% 94%;
+
+    --popover: 24 8% 10%;
+    --popover-foreground: 30 15% 94%;
+
+    --primary: 25 95% 58%;
+    --primary-foreground: 24 20% 8%;
+
+    --secondary: 24 6% 16%;
+    --secondary-foreground: 30 15% 92%;
+
+    --muted: 24 6% 15%;
+    --muted-foreground: 25 8% 62%;
+
+    --accent: 24 6% 17%;
+    --accent-foreground: 30 15% 92%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 24 6% 20%;
+    --input: 24 6% 22%;
+    --ring: 25 95% 58%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: 'cv11', 'ss01';
+  }
+
+  /* Offset anchor jumps so headings clear the sticky header. */
+  section[id] {
+    scroll-margin-top: 5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

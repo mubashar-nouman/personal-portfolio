@@ -1,5 +1,3 @@
-import type { LucideIcon } from 'lucide-react';
-
 export interface Project {
   id: number;
   title: string;
@@ -21,13 +19,13 @@ export interface Project {
 export type ProjectCategory = 'SaaS' | 'AI' | 'Mobile' | 'Web';
 
 export interface Experience {
-  location: string;
   id: number;
   company: string;
   position: string;
   duration: string;
   description: string[];
   technologies: string[];
+  location: string;
 }
 
 export interface Education {
@@ -44,61 +42,6 @@ export interface Certification {
   issuer: string;
   date: string;
   link?: string;
-}
-
-export interface Testimonial {
-  id: number;
-  name: string;
-  position: string;
-  company: string;
-  testimonial: string;
-  avatar: string;
-}
-
-export interface BlogPost {
-  id: number;
-  title: string;
-  excerpt: string;
-  date: string;
-  readTime: string;
-  image: string;
-  link: string;
-}
-
-export interface SpeakingEvent {
-  id: number;
-  title: string;
-  event: string;
-  date: string;
-  description: string;
-  link?: string;
-}
-
-export interface OpenSourceContribution {
-  icon?: LucideIcon;
-  id: number;
-  project: string;
-  description: string;
-  link: string;
-  category: string;
-  stars?: number;
-  pullRequests?: number;
-  image?: string;
-}
-
-export interface Award {
-  id: number;
-  title: string;
-  issuer: string;
-  date: string;
-  description: string;
-}
-
-export interface Hobby {
-  id: number;
-  title: string;
-  description: string;
-  icon: string;
 }
 
 export interface Service {
