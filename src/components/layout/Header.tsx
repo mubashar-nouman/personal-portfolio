@@ -5,12 +5,20 @@ import ThemeToggle from './ThemeToggle';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
+/**
+ * Every section that actually renders, in page order. Testimonials and Blog are
+ * deliberately absent: both return null while their data arrays are empty, so
+ * linking to them would produce dead anchors.
+ */
 const navItems = [
   { name: 'Services', href: '#services' },
-  { name: 'Work', href: '#projects' },
+  { name: 'Projects', href: '#projects' },
   { name: 'About', href: '#about' },
+  { name: 'Skills', href: '#skills' },
   { name: 'Process', href: '#process' },
   { name: 'Experience', href: '#experience' },
+  { name: 'Education', href: '#education' },
+  { name: 'Contact', href: '#contact' },
 ];
 
 /**
@@ -20,12 +28,37 @@ const navItems = [
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeId, setActiveId] = useState('');
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 10);
     handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Highlight whichever section currently occupies the upper part of the
+  // viewport, so the longer nav shows where you are on the page.
+  useEffect(() => {
+    const sections = navItems
+      .map((item) => document.getElementById(item.href.slice(1)))
+      .filter((el): el is HTMLElement => el !== null);
+
+    if (sections.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+
+        if (visible[0]) setActiveId(visible[0].target.id);
+      },
+      { rootMargin: '-10% 0px -55% 0px', threshold: 0 }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
   }, []);
 
   const scrollToSection = (href: string) => {
@@ -63,7 +96,12 @@ const Header = () => {
                 asChild
                 variant="ghost"
                 size="sm"
-                className="text-zinc-700 hover:bg-transparent hover:text-orange-600 dark:text-zinc-200 dark:hover:bg-transparent dark:hover:text-orange-400"
+                className={cn(
+                  'hover:bg-transparent hover:text-orange-600 dark:hover:bg-transparent dark:hover:text-orange-400',
+                  activeId === item.href.slice(1)
+                    ? 'font-semibold text-orange-600 dark:text-orange-400'
+                    : 'text-zinc-700 dark:text-zinc-200'
+                )}
               >
                 <a
                   href={item.href}
