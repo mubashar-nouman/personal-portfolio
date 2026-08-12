@@ -112,6 +112,25 @@ export const projects: Project[] = [
     demoLink: "https://zygenai.com/",
   },
   {
+    id: 9,
+    title: "Clear Sky Co",
+    tagline: "Practice analytics for allied health clinics",
+    description:
+      "An advisory platform that shows clinic owners the numbers behind their business. It syncs with Cliniko and turns raw practice data into the three metrics that decide profitability — clinician utilisation, revenue per clinician and margin — so growth decisions stop being guesswork.",
+    highlights: [
+      "One-click Cliniko integration syncing appointment and billing data",
+      "Dashboard tracking utilisation, revenue per clinician and profit margin over time",
+      "Per-clinician performance breakdown against utilisation targets",
+      "Free diagnostic that surfaces where revenue is leaking",
+      "Marketing site and application flow for strategy-call intake",
+    ],
+    tags: ["Next.js", "TypeScript", "Node.js", "PostgreSQL", "Cliniko API", "Tailwind CSS"],
+    image: "/projects/clearsky.jpg",
+    year: "2025",
+    category: "SaaS",
+    demoLink: "https://www.clearskyco.com.au/",
+  },
+  {
     id: 8,
     title: "ScriptLix",
     tagline: "A marketplace for production-ready screenplays",
