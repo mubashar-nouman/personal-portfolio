@@ -99,3 +99,67 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* Swiper controls default to a blue theme; match the site's orange instead. */
+.projects-swiper {
+  --swiper-theme-color: #ea580c;
+  --swiper-navigation-size: 22px;
+  --swiper-pagination-bullet-inactive-color: #a1a1aa;
+  --swiper-pagination-bullet-inactive-opacity: 0.5;
+}
+
+.dark .projects-swiper {
+  --swiper-theme-color: #f97316;
+}
+
+/* Equal-height slides so cards in a row line up regardless of copy length. */
+.projects-swiper .swiper-slide {
+  height: auto;
+}
+
+/* Arrows sit clear of the track so they never cover card content. */
+@media (min-width: 1024px) {
+  .projects-swiper .swiper-button-prev {
+    left: 0.5rem;
+  }
+
+  .projects-swiper .swiper-button-next {
+    right: 0.5rem;
+  }
+
+  /* Sit over the card image, not the title and buttons below it. */
+  .projects-swiper .swiper-button-next,
+  .projects-swiper .swiper-button-prev {
+    top: 7.5rem;
+  }
+}
+
+/* Under lg there is no spare room, so swipe and the dots drive the carousel. */
+@media (max-width: 1023px) {
+  .projects-swiper .swiper-button-next,
+  .projects-swiper .swiper-button-prev {
+    display: none;
+  }
+}
+
+.projects-swiper .swiper-button-next,
+.projects-swiper .swiper-button-prev {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 9999px;
+  background-color: #fff;
+  border: 1px solid #e4e4e7;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.1);
+}
+
+.dark .projects-swiper .swiper-button-next,
+.dark .projects-swiper .swiper-button-prev {
+  background-color: #18181b;
+  border-color: #3f3f46;
+}
+
+.projects-swiper .swiper-button-next::after,
+.projects-swiper .swiper-button-prev::after {
+  font-size: 0.85rem;
+  font-weight: 700;
+}
