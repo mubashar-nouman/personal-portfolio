@@ -4,21 +4,21 @@ type Theme = 'light' | 'dark';
 
 export function useTheme() {
   // Check for saved theme preference or use system preference
-  const getInitialTheme = (): Theme => {
-    if (typeof window !== 'undefined') {
-      const savedTheme = localStorage.getItem('theme') as Theme | null;
-      if (savedTheme) {
-        return 'dark';
-      }
-      
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      return prefersDark ? 'dark' : 'light';
-    }
-    
-    return 'dark'; // Default for SSR
-  };
+  // Must match what the prerendered HTML was built with, or hydration mismatches.
+  const [theme, setTheme] = useState<Theme>('light');
 
-  const [theme, setTheme] = useState<Theme>(getInitialTheme);
+  // Resolve the real preference after mount, once hydration has completed.
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('theme') as Theme | null;
+    if (savedTheme === 'light' || savedTheme === 'dark') {
+      setTheme(savedTheme);
+      return;
+    }
+
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      setTheme('dark');
+    }
+  }, []);
 
   // Update theme class and localStorage when theme changes
   useEffect(() => {
