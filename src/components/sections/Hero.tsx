@@ -18,9 +18,9 @@ const stats = [
 ];
 
 /**
- * The portrait is a knockout on flat yellow, so it is seated in a warm panel
- * that repeats that yellow deliberately — the colour then reads as a designed
- * block rather than a stray photo background.
+ * The portrait is a knockout on an orange gradient matching the site accent, so
+ * the panel behind it repeats that orange — it only shows while the image
+ * loads, and keeps the block from flashing a clashing colour.
  */
 const Hero = () => {
   const scrollTo = (selector: string) => {
@@ -35,12 +35,12 @@ const Hero = () => {
       id="home"
       className="relative overflow-hidden border-b border-zinc-200 bg-zinc-50 pt-24 dark:border-zinc-800 dark:bg-zinc-900 md:pt-28"
     >
-      {/* Warm wash behind the portrait side, anchoring the yellow. */}
+      {/* Warm wash behind the portrait side, echoing the accent. */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0"
       >
-        <div className="absolute -right-24 top-0 h-[28rem] w-[28rem] rounded-full bg-amber-400/20 blur-3xl dark:bg-amber-500/10" />
+        <div className="absolute -right-24 top-0 h-[28rem] w-[28rem] rounded-full bg-orange-500/15 blur-3xl dark:bg-orange-500/10" />
         <div className="absolute -left-20 bottom-0 h-80 w-80 rounded-full bg-orange-500/10 blur-3xl dark:bg-orange-500/10" />
       </div>
 
@@ -110,12 +110,12 @@ const Hero = () => {
           {/* Portrait panel */}
           <div className="order-1 animate-fade-up [animation-delay:120ms] lg:order-2">
             <div className="relative mx-auto w-full max-w-[15rem] sm:max-w-xs lg:max-w-sm">
-              <div className="relative overflow-hidden rounded-[1.75rem] bg-amber-400 shadow-xl ring-1 ring-black/5 dark:bg-amber-500">
+              <div className="relative overflow-hidden rounded-[1.75rem] bg-orange-500 shadow-xl ring-1 ring-black/5 dark:bg-orange-600">
                 <img
                   src="/mine.jpg"
                   alt="Mubashar Nouman"
-                  width={640}
-                  height={640}
+                  width={800}
+                  height={800}
                   className="block w-full object-cover"
                 />
               </div>
