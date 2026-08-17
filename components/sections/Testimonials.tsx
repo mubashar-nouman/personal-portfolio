@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import Section from '@/components/ui/Section';
 import { testimonials } from '@/data';

@@ -1,3 +1,5 @@
+'use client';
+
 import { ArrowUpRight, ExternalLink, Github, Lock, Zap } from 'lucide-react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { A11y, Autoplay, Navigation, Pagination } from 'swiper/modules';

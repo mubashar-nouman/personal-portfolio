@@ -1,3 +1,5 @@
+'use client';
+
 import { FileText, Github, Instagram, Linkedin, Mail } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
