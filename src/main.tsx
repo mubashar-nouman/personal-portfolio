@@ -1,13 +1,21 @@
 import { StrictMode } from 'react';
 import { createRoot, hydrateRoot } from 'react-dom/client';
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import App from './App.tsx';
 import './index.css';
 
 const container = document.getElementById('root')!;
 
+/**
+ * Analytics lives here rather than in App so it never runs during the build-time
+ * prerender, which has no browser to measure.
+ */
 const app = (
   <StrictMode>
     <App />
+    <Analytics />
+    <SpeedInsights />
   </StrictMode>
 );
 
