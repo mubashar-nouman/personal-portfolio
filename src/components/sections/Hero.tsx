@@ -3,7 +3,8 @@ import { FileText, Github, Instagram, Linkedin, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { projects } from '@/data';
 
-const RESUME_URL = "/projects/Mubashar's_Resume.pdf";
+/** Stable short URL — replace public/resume.pdf anytime; path stays /cv. */
+const RESUME_URL = '/cv';
 
 const socials = [
   { icon: Github, label: 'GitHub', href: 'https://github.com/mubashar-nouman' },
