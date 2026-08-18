@@ -6,6 +6,7 @@ import { Menu, X } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { trackClick } from '@/lib/analytics';
 
 /**
  * Every section that actually renders, in page order. Testimonials and Blog are
@@ -124,6 +125,7 @@ const Header = () => {
                   href="#contact"
                   onClick={(e) => {
                     e.preventDefault();
+                    trackClick('cta_hire_me', { location: 'header' });
                     scrollToSection('#contact');
                   }}
                 >
@@ -171,6 +173,7 @@ const Header = () => {
                 href="#contact"
                 onClick={(e) => {
                   e.preventDefault();
+                  trackClick('cta_hire_me', { location: 'mobile_menu' });
                   scrollToSection('#contact');
                 }}
               >
