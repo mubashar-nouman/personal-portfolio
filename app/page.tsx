@@ -1,4 +1,3 @@
-
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import Hero from '@/components/sections/Hero';
@@ -12,16 +11,13 @@ import Education from '@/components/sections/Education';
 import Certifications from '@/components/sections/Certifications';
 import Testimonials from '@/components/sections/Testimonials';
 import Blog from '@/components/sections/Blog';
-// import Speaking from '@/components/sections/Speaking';
-// import OpenSource from '@/components/sections/OpenSource';
-// import Awards from '@/components/sections/Awards';
 import Contact from '@/components/sections/Contact';
 
 /**
  * Section order follows the client journey: what I do -> proof I can do it ->
  * who I am -> how we'd work -> background -> get in touch.
  */
-function App() {
+export default function Home() {
   return (
     <div className="min-h-screen bg-white dark:bg-dark-900">
       <Header />
@@ -37,14 +33,9 @@ function App() {
         <Education />
         <Certifications />
         <Blog />
-        {/* <Speaking /> */}
-        {/* <OpenSource /> */}
-        {/* <Awards /> */}
         <Contact />
       </main>
       <Footer />
     </div>
   );
 }
-
-export default App;

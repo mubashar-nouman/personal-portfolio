@@ -1,3 +1,5 @@
+'use client';
+
 import { ArrowUpRight, ExternalLink, Github, Lock, Zap } from 'lucide-react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { A11y, Autoplay, Navigation, Pagination } from 'swiper/modules';
@@ -9,6 +11,7 @@ import { projects } from '@/data';
 import type { Project } from '@/types';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { trackClick } from '@/lib/analytics';
 
 const ProjectCard = ({ project }: { project: Project }) => (
   <article className="group flex h-full flex-col overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-sm transition-all duration-300 hover:border-orange-300 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-orange-500/50">
@@ -66,7 +69,12 @@ const ProjectCard = ({ project }: { project: Project }) => (
       <div className="mt-4 flex flex-wrap items-center gap-2">
         {project.demoLink ? (
           <Button asChild size="sm">
-            <a href={project.demoLink} target="_blank" rel="noopener noreferrer">
+            <a
+              href={project.demoLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackClick('project_demo_click', { project: project.title })}
+            >
               <ExternalLink />
               Live demo
             </a>

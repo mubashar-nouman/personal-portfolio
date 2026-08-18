@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import Section from '@/components/ui/Section';
 import { Mail, Phone, MapPin, Send, Check, Linkedin } from 'lucide-react';

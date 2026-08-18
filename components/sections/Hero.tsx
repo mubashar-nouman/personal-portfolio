@@ -1,7 +1,10 @@
+'use client';
+
 import { FileText, Github, Instagram, Linkedin, Mail } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { projects } from '@/data';
+import { trackClick } from '@/lib/analytics';
 
 /** Stable short URL — replace public/resume.pdf anytime; path stays /cv. */
 const RESUME_URL = '/cv';
@@ -68,12 +71,23 @@ const Hero = () => {
             </p>
 
             <div className="mt-8 flex flex-col justify-center gap-2.5 sm:flex-row lg:justify-start">
-              <Button size="lg" onClick={() => scrollTo('#contact')}>
+              <Button
+                size="lg"
+                onClick={() => {
+                  trackClick('cta_start_project', { location: 'hero' });
+                  scrollTo('#contact');
+                }}
+              >
                 <Mail />
                 Start a project
               </Button>
               <Button asChild variant="outline" size="lg">
-                <a href={RESUME_URL} target="_blank" rel="noopener noreferrer">
+                <a
+                  href={RESUME_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackClick('cta_view_resume', { location: 'hero' })}
+                >
                   <FileText />
                   View Resume
                 </a>

@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import Section from '@/components/ui/Section';
 import { Mail, CheckCircle2 } from 'lucide-react';
